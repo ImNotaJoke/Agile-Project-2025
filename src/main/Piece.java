@@ -10,22 +10,22 @@ public class Piece{
 
     public String getPiece(){
         if(this.name == PieceName.PION){
-            return "P"; 
+            return "♟"; 
         }
         else if(this.name == PieceName.TOUR){
-            return "T"; 
+            return "♜"; 
         }
         else if(this.name == PieceName.CAVALIER){
-            return "C"; 
+            return "♞"; 
         }
         else if(this.name == PieceName.FOU){
-            return "F"; 
+            return "♝"; 
         }
         else if(this.name == PieceName.DAME){
-            return "D"; 
+            return "♛"; 
         }
         else{
-            return "R"; 
+            return "♚"; 
         }
     }
 }
