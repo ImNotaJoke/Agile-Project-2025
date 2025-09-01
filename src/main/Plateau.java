@@ -1,4 +1,5 @@
 package main;
+import main.piece.Piece;
 public class Plateau {
     private Piece[][] plateau;
     private String[][] plateauCouleur;
@@ -36,7 +37,7 @@ public class Plateau {
                 if(plateau[i][k] == null){
                     s+= plateauCouleur[i][k];
                 }else{
-                    s+= plateauCouleur[i][k]; //A CHANGER
+                    s+= plateau[i][k].getPiece();
                 }
             }
             s+= "\n";
@@ -44,5 +45,4 @@ public class Plateau {
 
         return s;
     }
-    
 }

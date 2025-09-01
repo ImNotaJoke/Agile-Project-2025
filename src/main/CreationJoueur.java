@@ -18,4 +18,5 @@ public class CreationJoueur{
             return this.couleur; 
         }
         // un joueur ne peux changer de couleur au cours d'une partie //
+        //faire en sorte que l'user entre lui même son pseudo //
     } 

@@ -1,7 +1,8 @@
 package main.piece;
+import main.Couleur;
 
 public class Fou extends Piece {
-    public Fou(String color, int[] position) {
+    public Fou(Couleur color, int[] position) {
         super(color, PieceName.FOU, position);
     }
     

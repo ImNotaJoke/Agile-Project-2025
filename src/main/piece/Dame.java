@@ -1,7 +1,8 @@
 package main.piece;
+import main.Couleur;
 
 public class Dame extends Piece {
-    public Dame(String color, int[] position) {
+    public Dame(Couleur color, int[] position) {
         super(color, PieceName.DAME, position);
     }
     

@@ -1,17 +1,18 @@
 package main.piece;
+import main.Couleur;
 
 public class Piece{
-    String color;
+    Couleur color;
     PieceName name;
     int[] position;
     
-    public Piece(String color, PieceName name, int[] position){
+    public Piece(Couleur color, PieceName name, int[] position){
         this.color = color; 
         this.name = name; 
         this.position = position; 
     }
 
-    public String getColor(){
+    public Couleur getColor(){
         return this.color; 
     }
 
@@ -38,5 +39,9 @@ public class Piece{
 
     public int[] getPosition(){
         return this.position; 
+    }
+
+    public void setPosition(int[] position){
+        this.position = position; 
     }
 }

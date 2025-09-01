@@ -16,5 +16,6 @@ public class ChessWithMe{
 
         System.out.println(joueur);
         System.out.println(joueur2);
+        
     }
 }
