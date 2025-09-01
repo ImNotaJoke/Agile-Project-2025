@@ -1,6 +1,6 @@
 package main;
 
-public public class CreationJoueur{
+public class CreationJoueur{
     /* Attributs */
         private String pseudo; 
     
@@ -12,6 +12,4 @@ public public class CreationJoueur{
         public String getPseudo(){
             return this.pseudo; 
         }
-    } {
-    
-}
+    } 
