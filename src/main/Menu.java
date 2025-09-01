@@ -1,56 +1,110 @@
 package main;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Menu{
+public class Menu {
 
-    // Affichage du menu principal et gestion des choix de l'utilisateur
     public static void main(String[] args) {
-        afficherMenu();
         Scanner menu = new Scanner(System.in);
         boolean quitter = false;
 
         while (!quitter) {
             afficherMenu();
-            int choix = menu.nextInt();
+            try {
+                System.out.print("Votre choix : ");
+                int choix = menu.nextInt();
+                menu.nextLine(); // Vider le buffer après nextInt
 
-            if (choix == 1) {
-                quitter = true;
-                afficherJouer();
-            } else if (choix == 2) {
-                quitter = true;
-                afficherHistorique();
-            } else if (choix == 3) {
-                quitter = true;
-                afficherCredits();
-            } else if (choix == 4) {
-                quitter = true;
-                System.out.println("\n                            Au revoir !\n\n");
-            } else {
-                System.out.println("     Choix invalide. Veuillez réessayer.");
+                switch (choix) {
+                    case 1:
+                        afficherJouer(menu); // RESTE dans le sous-menu jusqu’à retour
+                        break;
+                    case 2:
+                        afficherHistorique(menu); // RESTE jusqu’à retour
+                        break;
+                    case 3:
+                        afficherCredits(menu); // RESTE jusqu’à retour
+                        break;
+                    case 4:
+                        quitter = true;
+                        System.out.println("\n                            Au revoir !\n");
+                        break;
+                    default:
+                        System.out.println("     Choix invalide. Veuillez réessayer.\n");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("     Entrée invalide. Veuillez entrer un nombre.\n");
+                menu.nextLine(); // Vider l’entrée incorrecte
             }
         }
+
         menu.close();
     }
 
-    // afficher les différentes sections du menu
-    public static void afficherMenu(){
-        System.out.println("\n\n                            Bienvenue sur ChessWithMe !\n\n                                 1. Jouer\n                                 2. Historique\n                                 3. Crédits\n                                 4. Quitter");
-        System.out.print("\n\n  Veuillez choisir une option :   [1/2/3/4] \n\n");
+    public static void afficherMenu() {
+        System.out.println("\n\n                            Bienvenue sur ChessWithMe !");
+        System.out.println("                                 1. Jouer");
+        System.out.println("                                 2. Historique");
+        System.out.println("                                 3. Crédits");
+        System.out.println("                                 4. Quitter");
+        System.out.println();
     }
 
-    // afficher l'historique des parties jouées
-    public static void afficherHistorique(){
-        System.out.println("                           Historique\n");
+    public static void afficherJouer(Scanner scanner) {
+        boolean retour = false;
+
+        while (!retour) {
+            System.out.println("\n\n                            Menu de Jeu");
+            System.out.println("                                 1. vs Adversaire");
+            System.out.println("                                 2. vs Ordinateur");
+            System.out.println("                                 3. Retour au menu principal\n");
+
+            try {
+                System.out.print("Votre choix : ");
+                int choix = scanner.nextInt();
+                scanner.nextLine(); // vider le buffer
+
+                switch (choix) {
+                    case 1:
+                        System.out.println("Démarrage de la partie contre un autre joueur...\n");
+                        // Ajouter ici le lancement réel de la partie si nécessaire
+                        break;
+                    case 2:
+                        System.out.println("Démarrage de la partie contre l'ordinateur...\n");
+                        // Ajouter ici le lancement réel de la partie si nécessaire
+                        break;
+                    case 3:
+                        retour = true;
+                        break;
+                    default:
+                        System.out.println("Choix invalide. Veuillez réessayer.\n");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Entrée invalide. Veuillez entrer un nombre.\n");
+                scanner.nextLine(); // vider l’entrée incorrecte
+            }
+        }
     }
 
-    // afficher les options de jeu
-    public static void afficherJouer(){
-        System.out.println("\n\n                            Vous avez choisi de jouer !\n\n                                 1. vs Adversaire\n                                 2. vs Ordinateur\n\n");
+    public static void afficherHistorique(Scanner scanner) {
+        System.out.println("\n                           Historique");
+        System.out.println("Aucune partie enregistrée pour le moment.\n");
+
+        System.out.println("Appuyez sur Entrée pour revenir au menu principal...");
+        scanner.nextLine();
     }
 
-    // afficher les crédits du projet
-    public static void afficherCredits(){
-        System.out.println("\n\n                            Crédits\n\n   Réalisé par :\n   - \n   - \n   - \n   - \n   - \n   - \n\n");
+    public static void afficherCredits(Scanner scanner) {
+        System.out.println("\n\n                            Crédits");
+        System.out.println("   Réalisé par :");
+        System.out.println("   - Nom 1");
+        System.out.println("   - Nom 2");
+        System.out.println("   - Nom 3");
+        System.out.println("   - Nom 4");
+        System.out.println("   - Nom 5\n");
+
+        System.out.println("Appuyez sur Entrée pour revenir au menu principal...");
+        scanner.nextLine();
     }
 }
