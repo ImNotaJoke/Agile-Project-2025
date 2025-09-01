@@ -1,8 +1,15 @@
-package main;
+package main.piece;
 
 public class Piece{
     String color;
     PieceName name;
+    int[] position;
+    
+    public Piece(String color, PieceName name, int[] position){
+        this.color = color; 
+        this.name = name; 
+        this.position = position; 
+    }
 
     public String getColor(){
         return this.color; 
@@ -27,5 +34,9 @@ public class Piece{
         else{
             return "♚"; 
         }
+    }
+
+    public int[] getPosition(){
+        return this.position; 
     }
 }
