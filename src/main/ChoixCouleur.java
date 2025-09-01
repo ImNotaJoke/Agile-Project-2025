@@ -12,10 +12,10 @@ public class ChoixCouleur {
     }
 
     public Couleur getCouleur() {
-        return couleur;
+        return this.couleur;
     }
 
-    public static ChoixCouleur demandeCouleur(){
+    public static Couleur demandeCouleur(){
         Scanner sc = new Scanner(System.in);
         int choix = 0;
 
@@ -38,12 +38,12 @@ public class ChoixCouleur {
 
         Couleur couleurChoisie;
 
-        if(choix == 1 ){
+        if(choix == 1){
             couleurChoisie = Couleur.BLANC;
         }
         else{
             couleurChoisie = Couleur.NOIR;
         }
-        return new ChoixCouleur(couleurChoisie);
+        return couleurChoisie;
     }
 }
