@@ -26,35 +26,30 @@ public class ChessWithMe {
         System.out.println("Joueur 2 : " + j2.getPseudo() + " (" + j2.getCouleur() + ")");
 
         Plateau plateau = new Plateau();
-
-        plateau.getPlateau()[1][0].move(plateau, new int[] { 1, 0 }, new int[] { 2, 0 });
         System.out.println(plateau);
         wait(5000);
-        clearConsole();
-        plateau.getPlateau()[2][0].move(plateau, new int[] { 2, 0 }, new int[] { 3, 0 });
+        //Exemple de déplacements
+        plateau.getPlateau()[1][0].move(plateau, new int[] { 1, 0 }, new int[] { 3, 0 });
         System.out.println(plateau);
         wait(5000);
-        clearConsole();
+        plateau.getPlateau()[3][0].move(plateau, new int[] { 3, 0 }, new int[] { 5, 0 });
+        System.out.println(plateau);
+        wait(5000);
         plateau.getPlateau()[0][0].move(plateau, new int[] { 0, 0 }, new int[] { 1, 0 });
         System.out.println(plateau);
         wait(5000);
-        clearConsole();
         plateau.getPlateau()[0][1].move(plateau, new int[] { 0, 1 }, new int[] { 2, 0 });
         System.out.println(plateau);
         wait(5000);
-        clearConsole();
         plateau.getPlateau()[1][3].move(plateau, new int[] { 1, 3 }, new int[] { 2 , 3 });
         System.out.println(plateau);
         wait(5000);
-        clearConsole();
         plateau.getPlateau()[0][2].move(plateau, new int[] { 0, 2 }, new int[] { 3, 5});
         System.out.println(plateau);
         wait(5000);
-        clearConsole();
         plateau.getPlateau()[0][4].move(plateau, new int[] { 0, 4 }, new int[] { 1, 3 });
         System.out.println(plateau);
         wait(5000);
-        clearConsole();
         plateau.getPlateau()[0][3].move(plateau, new int[] { 0, 3 }, new int[] { 0, 0 });
         System.out.println(plateau);
     }

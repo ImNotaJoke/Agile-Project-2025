@@ -4,6 +4,8 @@ import main.Couleur;
 import main.Plateau;
 
 public class Pion extends Piece {
+    private boolean premierCoup = true;
+
     public Pion(Couleur color) {
         super(color, PieceName.PION);
     }
@@ -39,16 +41,17 @@ public class Pion extends Piece {
 
     public boolean moveIsOk(Piece[][] plateau, int[] oldPosition, int[] newPosition) {
         boolean estBlanc = super.getColor() == Couleur.BLANC;
+        int maxCase = premierCoup ? 2 : 1;
         if (estBlanc) {
-            if (plateau[oldPosition[0] - 1][oldPosition[1]] == null) {
-                if (newPosition[0] >= 0 && newPosition[0] <= 7 && newPosition[0] == oldPosition[0] - 1
+            if (plateau[oldPosition[0] - maxCase][oldPosition[1]] == null) {
+                if (newPosition[0] >= 0 && newPosition[0] <= 7 && (newPosition[0] == oldPosition[0] - 1 || newPosition[0] == oldPosition[0] - maxCase)
                         && newPosition[1] == oldPosition[1]) {
                     return true;
                 }
             }
         } else {
             if (plateau[oldPosition[0] + 1][oldPosition[1]] == null) {
-                if (newPosition[0] >= 0 && newPosition[0] <= 7 && newPosition[0] == oldPosition[0] + 1
+                if (newPosition[0] >= 0 && newPosition[0] <= 7 && (newPosition[0] == oldPosition[0] + 1 || newPosition[0] == oldPosition[0] + maxCase)
                         && newPosition[1] == oldPosition[1]) {
                     return true;
                 }
@@ -75,6 +78,7 @@ public class Pion extends Piece {
             plat[newPosition[0]][newPosition[1]] = this;
             plat[oldPosition[0]][oldPosition[1]] = null;
             plateau.setPlateau(plat);
+            premierCoup = false;
             this.promotion(plateau, newPosition);
             return true;
         } else {
