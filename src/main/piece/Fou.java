@@ -19,12 +19,11 @@ public class Fou extends Piece {
 
     public boolean move(Plateau plateau, int[] oldPosition, int[] newPosition) {
         if (moveIsOk(plateau.getPlateau(), oldPosition, newPosition)) {
-            if (plateau.getPlateau()[newPosition[0]][newPosition[1]] == null) {
-                plateau.getPlateau()[newPosition[0]][newPosition[1]] = this;
-                plateau.getPlateau()[oldPosition[0]][oldPosition[1]] = null;
-                return true;
-            }
+            plateau.getPlateau()[newPosition[0]][newPosition[1]] = this;
+            plateau.getPlateau()[oldPosition[0]][oldPosition[1]] = null;
+            return true;
         }
+        System.out.println("Mouvement impossible pour le fou");
         return false;
     }
 }

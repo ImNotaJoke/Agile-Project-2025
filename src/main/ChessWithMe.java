@@ -36,7 +36,11 @@ public class ChessWithMe {
         System.out.println(plateau);
         plateau.getPlateau()[1][3].move(plateau, new int[] { 1, 3 }, new int[] { 2 , 3 });
         System.out.println(plateau);
-        plateau.getPlateau()[0][2].move(plateau, new int[] { 0, 2 }, new int[] { 2, 4 });
+        plateau.getPlateau()[0][2].move(plateau, new int[] { 0, 2 }, new int[] { 3, 5});
+        System.out.println(plateau);
+        plateau.getPlateau()[1][4].move(plateau, new int[] { 1, 4 }, new int[] { 2, 4 });
+        System.out.println(plateau);
+        plateau.getPlateau()[0][4].move(plateau, new int[] { 0, 4 }, new int[] { 1, 4 });
         System.out.println(plateau);
 
     }

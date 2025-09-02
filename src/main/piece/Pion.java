@@ -72,7 +72,7 @@ public class Pion extends Piece {
     public boolean move(Plateau plateau, int[] oldPosition, int[] newPosition) {
         Piece[][] plat = plateau.getPlateau();
         if (this.moveIsOk(plat, oldPosition, newPosition)) {
-            plat[newPosition[0]][newPosition[1]] = plat[oldPosition[0]][oldPosition[1]];
+            plat[newPosition[0]][newPosition[1]] = this;
             plat[oldPosition[0]][oldPosition[1]] = null;
             plateau.setPlateau(plat);
             this.promotion(plateau, newPosition);

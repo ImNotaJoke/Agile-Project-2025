@@ -17,13 +17,12 @@ public class Cavalier extends Piece {
     public boolean move(Plateau plateau, int[] oldPosition, int[] newPosition) {
         Piece[][] plat = plateau.getPlateau();
         if (this.moveIsOk(plat, oldPosition, newPosition)) {
-            plat[newPosition[0]][newPosition[1]] = plat[oldPosition[0]][oldPosition[1]];
+            plat[newPosition[0]][newPosition[1]] = this;
             plat[oldPosition[0]][oldPosition[1]] = null;
             plateau.setPlateau(plat);
             return true;
-        } else {
-            System.out.println("Mouvement impossible pour le cavalier");
-            return false;
         }
+        System.out.println("Mouvement impossible pour le cavalier");
+        return false;
     }
 }
