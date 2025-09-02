@@ -60,7 +60,7 @@ public class Pion extends Piece {
     public boolean promotion(Plateau plateau, int[] position) {
         Piece[][] plat = plateau.getPlateau();
         Couleur couleur = plat[position[0]][position[1]].getColor();
-        if(position[0] == 0 && position[0] == 7){
+        if(position[0] == 0 || position[0] == 7){
             System.out.println("Promotion du pion en dame");
             plat[position[0]][position[1]] = new Dame(couleur);
             plateau.setPlateau(plat);
