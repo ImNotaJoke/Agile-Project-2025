@@ -56,7 +56,6 @@ public class Menu {
     public static void afficherJouer(Scanner scanner) {
         boolean retour = false;
 
-
         while (!retour) {
             afficherChoisirAdversaireASCII();
             System.out.println("\n\n                                 1. vs Adversaire");
@@ -75,11 +74,12 @@ public class Menu {
                         break;
                     case 2:
                         System.out.println("En cours de création...\n");
-                        // Ajouter ici le lancement réel de la partie si nécessaire
+                        // En attente...
                         break;
                     case 3:
                         retour = true;
                         break;
+                        // Retour au menu principal
                     default:
                         System.out.println("Choix invalide. Veuillez réessayer.\n");
                 }
@@ -106,6 +106,7 @@ public class Menu {
         System.out.println("   - Sulivan");
         System.out.println("   - Camille");
         System.out.println("   - Manon");
+        System.out.println("   - Matheo");
         System.out.println("   - Nathan");
         System.out.println("   - Valentin\n");
 
@@ -153,6 +154,7 @@ public class Menu {
     System.out.println("                                             ");
     }
 
+    // Affiche "Choisir Adversaire" en ASCII
     public static void afficherChoisirAdversaireASCII() {
     System.out.println("   ____ _                          _ _           _                                    ");
     System.out.println("  / ___| |__   ___ (_)___(_)_ __  | ( ) __ _  __| |_   _____ _ __ ___  __ _(_)_ __ ___ ");
@@ -160,6 +162,6 @@ public class Menu {
     System.out.println(" | |___| | | | (_) | \\__ \\ | |    | | | (_| | (_| |\\ V /  __/ |  \\__ \\ (_| | | | |  __/");
     System.out.println("  \\____|_| |_|\\___/|_|___/_|_|    |_|  \\__,_|\\__,_| \\_/ \\___|_|  |___/\\__,_|_|_|  \\___|");
     System.out.println("                                                                                       ");
-}
+    }
 
 }
