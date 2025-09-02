@@ -60,6 +60,7 @@ public class Plateau {
         }
     }
 
+    @Override
     public String toString() {
         String s = "";
 

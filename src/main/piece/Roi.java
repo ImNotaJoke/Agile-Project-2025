@@ -3,12 +3,12 @@ package main.piece;
 import main.Couleur;
 import main.Plateau;
 
-public class Rextends Piece {
+public class Roi extends Piece {
     public Roi(Couleur color) {
         super(color, PieceName.ROI);
     }
 
-    public boolean moveIsOk(Plateau plateau, int[] oldPosition, int[] newPosition) {
+    public boolean move(Plateau plateau, int[] oldPosition, int[] newPosition) {
         return true;
     }
 }
