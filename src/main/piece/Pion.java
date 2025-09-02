@@ -70,5 +70,4 @@ public class Pion extends Piece {
             return false;
         }
     }
-
 }

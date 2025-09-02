@@ -10,8 +10,6 @@ public class ChessWithMe {
 
         plateau.getPlateau()[1][0].move(plateau,new int[]{1,0},new int[]{2,0});
 
-        
-
-    System.out.println(plateau);
+        System.out.println(plateau);
     }
 }

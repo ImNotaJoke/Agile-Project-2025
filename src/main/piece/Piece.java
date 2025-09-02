@@ -18,32 +18,21 @@ public abstract class Piece {
     }
 
     public String getPiece() {
-        if (this.color == Couleur.BLANC) {
-            if (this.name == PieceName.PION) {
-                return "♟";
-            } else if (this.name == PieceName.TOUR) {
-                return "♜";
-            } else if (this.name == PieceName.CAVALIER) {
-                return "♞";
-            } else if (this.name == PieceName.FOU) {
-                return "♝";
-            } else if (this.name == PieceName.DAME) {
-                return "♛";
-            } else {
-                return "♚";
-            }
-        } else {
-            if (this.name == PieceName.TOUR) {
-                return "♖";
-            } else if (this.name == PieceName.CAVALIER) {
-                return "♘";
-            } else if (this.name == PieceName.FOU) {
-                return "♗";
-            } else if (this.name == PieceName.DAME) {
-                return "♕";
-            } else {
-                return "♔";
-            }
+        switch (this.name) {
+            case PION:
+                return this.color == Couleur.BLANC ? "♙" : "♟";
+            case TOUR:
+                return this.color == Couleur.BLANC ? "♖" : "♜";
+            case CAVALIER:
+                return this.color == Couleur.BLANC ? "♘" : "♞";
+            case FOU:
+                return this.color == Couleur.BLANC ? "♗" : "♝";
+            case DAME:
+                return this.color == Couleur.BLANC ? "♕" : "♛";
+            case ROI:
+                return this.color == Couleur.BLANC ? "♔" : "♚";
+            default:
+                return " ";
         }
     }
 
