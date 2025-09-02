@@ -8,7 +8,7 @@ public class Cavalier extends Piece {
         super(color, PieceName.CAVALIER);
     }
 
-    private static Boolean chemin(int departLigne, int departColonne, int arriveeligne, int arriveColonne) {
+    private static Boolean moveIsOk(int[][] plateau, int[] oldPosition, int) {
         return ((Math.abs(departLigne - arriveeligne) == 2 && Math.abs(departColonne - arriveColonne) == 1)
                 || (Math.abs(departLigne - arriveeligne) == 1 && Math.abs(departColonne - arriveColonne) == 2));
     }

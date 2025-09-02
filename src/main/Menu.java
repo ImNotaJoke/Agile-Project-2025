@@ -48,7 +48,8 @@ public class Menu {
         System.out.println("\n\n                       1. Jouer");
         System.out.println("                       2. Historique");
         System.out.println("                       3. Crédits");
-        System.out.println("                       4. Quitter");
+        System.out.println("                       4. Règles");
+        System.out.println("                       5. Quitter");
         System.out.println();
     }
 

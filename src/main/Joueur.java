@@ -1,5 +1,6 @@
 package main;
 
+import java.util.Scanner;
 public class Joueur {
     /* Attributs */
     private String pseudo;
@@ -49,5 +50,21 @@ public class Joueur {
             return false;
         }
         return true;
+    }
+
+    public int[] transformerCo(String co){
+        int[] tabCo = new int[2];
+        
+        return tabCo;
+    }
+
+    public void demanderDeplacement(){
+        do{
+            Scanner sc = new Scanner(System.in); 
+            System.out.println(this.pseudo + " quel piece veux tu bouger ?");
+            String co1 = sc.nextLine();
+            sc.close();
+        }while();
+        
     }
 }
