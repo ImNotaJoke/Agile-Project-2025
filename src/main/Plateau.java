@@ -66,7 +66,7 @@ public class Plateau {
         String s = "  a b c d e f g h  ";
         s += "\n";
         for (int i = 0; i < 8; i++) {
-            s += i + " ";
+            s += i+1 + " ";
             for (int k = 0; k < 8; k++) {
                 if (plateau[i][k] == null) {
                     s += plateauCouleur[i][k];
@@ -74,7 +74,7 @@ public class Plateau {
                     s += plateau[i][k].getPiece() + " ";
                 }
             }
-            s += " " + i;
+            s += " " + i+1;
             s += "\n";
         }
         s += "  a b c d e f g h  ";

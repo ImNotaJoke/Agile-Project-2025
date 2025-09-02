@@ -2,7 +2,6 @@ package main.piece;
 
 import main.Couleur;
 import main.Plateau;
-import main.Plateau;
 
 public class Pion extends Piece {
     public Pion(Couleur color) {

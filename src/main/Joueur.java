@@ -1,5 +1,6 @@
 package main;
 
+import java.util.Scanner;
 public class Joueur {
     /* Attributs */
     private String pseudo;
@@ -28,8 +29,6 @@ public class Joueur {
         this.couleur = couleur;
     }
 
-    // un joueur ne peux changer de couleur au cours d'une partie //
-    // faire en sorte que l'user entre lui même son pseudo //
     /* Methodes */
     @Override
     public String toString() {
@@ -52,21 +51,44 @@ public class Joueur {
         }
         return true;
     }
-    // public static void main(String[] args) {
-    // Joueur j = new Joueur("aa", Couleur.BLANC);
-    // System.out.println(j + "aaaaaaaaaaaaaaaaaaaaaaaaa");
-    // }
 
-    // public String choixPseudo() {
+    public int[] transformerCo(String co){
+        int[] tabCo = new int[2];
+        if(co.charAt(0) >= 'a' && co.charAt(0) <= 'h'){
+            tabCo[0] = co.charAt(0) - 'a';
+            if(co.charAt(1) >= 1 && co.charAt(1) <= 8){
+                tabCo[1] = co.charAt(1) - 1;
+                return tabCo;
+            }
+            return null;
+        }
+        return null;
+        
+    }
 
-    // Scanner rep = new Scanner(System.in);
-    // System.out.println(" Joueur 1 :Entrez votre pseudo: ");
-    // String nom = rep.nextLine();
-    // joueur1 = new Joueur(nom);
-    // Scanner rep2 = new Scanner(System.in);
-    // System.out.println("Joueur 2 : Entrez votre pseudo: ");
-    // String nomj2 = rep2.nextLine();
-    // joueur2 = new Joueur(nomj2);
-    // }
+    public void demanderDeplacement(Plateau plateau){
+        String co1 = "";
+        String co2 = "";
+        int[] co1tab;
+        int[] co2tab;
+        do{
+            do{
+                Scanner sc = new Scanner(System.in); 
+                System.out.println(this.pseudo + " quel piece veux tu bouger ?");
+                co1 = sc.nextLine();
+                co1tab = transformerCo(co1);
+                sc.close();
+            }while(transformerCo(co1) == null && plateau.getPlateau()[co1tab[0]][co1tab[1]].getColor().equals(this.getCouleur()));
 
+            do{
+                Scanner sc = new Scanner(System.in); 
+                System.out.println(this.pseudo + " où veux tu la bouger ?");
+                co2 = sc.nextLine();
+                co2tab = transformerCo(co2);
+                sc.close();
+            }while(transformerCo(co1) == null);  
+        }while(plateau.getPlateau()[co1tab[0]][co1tab[1]].move(plateau,co1tab,co2tab));
+        
+        
+    }
 }

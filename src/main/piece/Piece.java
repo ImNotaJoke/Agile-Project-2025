@@ -2,7 +2,6 @@ package main.piece;
 
 import main.Couleur;
 import main.Plateau;
-import main.Plateau;
 
 public abstract class Piece {
     Couleur color;

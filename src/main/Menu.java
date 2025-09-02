@@ -2,6 +2,7 @@ package main;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Menu {
 
@@ -26,17 +27,20 @@ public class Menu {
                         break;
                     case 3:
                         afficherCredits(menu);
-                        break;
+                        break; 
                     case 4:
+                        afficherRegles(menu);
+                        break;
+                    case 5:
                         quitter = true;
                         afficherAuRevoirASCII();
                         break;
                     default:
-                        System.out.println("\n     Choix invalide. Veuillez réessayer.\n");
+                        System.out.println("\n     Choix invalide. Veuillez rÃ©essayer.\n");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("\n     Entrée invalide. Veuillez entrer un nombre.\n");
-                menu.nextLine(); // Vider l’entrée incorrecte
+                System.out.println("\n     EntrÃ©e invalide. Veuillez entrer un nombre.\n");
+                menu.nextLine(); // Vider lâ€™entrÃ©e incorrecte
             }
         }
 
@@ -48,7 +52,8 @@ public class Menu {
         System.out.println("\n\n                       1. Jouer");
         System.out.println("                       2. Historique");
         System.out.println("                       3. Crédits");
-        System.out.println("                       4. Quitter");
+        System.out.println("                       4. Règles");
+        System.out.println("                       5. Quitter");
         System.out.println();
     }
 
@@ -91,7 +96,14 @@ public class Menu {
     // Affiche l'historique des parties
     public static void afficherHistorique(Scanner scanner) {
         afficherHistoriqueAscii();
-        System.out.println("Aucune partie enregistrée pour le moment.\n");
+        String nom = "Joueur1";
+        Couleur couleur = Couleur.BLANC;
+        Joueur j1 = new Joueur(nom,couleur);
+        ArrayList<Joueur> joueurs = new ArrayList<>();
+        joueurs.add(j1);
+        HistoriqueJ historique = new HistoriqueJ(joueurs);
+
+        System.out.println("Historique des parties " + historique.toString() + " :\n");
 
         System.out.println("Appuyez sur Entrée pour revenir au menu principal...");
         scanner.nextLine();
@@ -109,6 +121,22 @@ public class Menu {
         System.out.println("   - Valentin\n");
 
         System.out.println("Appuyez sur Entrée pour revenir au menu principal...");
+        scanner.nextLine();
+    }
+
+    // Affiche les regles des jeux des echecs simplifié
+    public static void afficherRegles(Scanner scanner) {
+        System.out.println("\n\n\n\n\n   Règles du jeu d'échecs simplifié :");
+        System.out.println("   - Chaque joueur commence avec 8 pions, 2 tours, 2 cavaliers, 2 fous, 1 dame et 1 roi.");
+        System.out.println("   - Les pions avancent d'une case, mais capturent en diagonale.");
+        System.out.println("   - Les tours se déplacent en ligne droite horizontalement ou verticalement.");
+        System.out.println("   - Les cavaliers se déplacent en 'L', deux cases dans une direction puis une case perpendiculairement.");
+        System.out.println("   - Les fous se déplacent en diagonale sur n'importe quelle distance.");
+        System.out.println("   - Les dames se déplacent en ligne droite dans toutes les directions.");
+        System.out.println("   - Les rois se déplacent d'une case dans toutes les directions.");
+        System.out.println("   - Attention seul le cavalier peut sauter au dessus des autres pièces.");
+        System.out.println("   - Le but du jeu est de mettre le roi adverse en échec et mat.");
+        System.out.println("   Appuyez sur Entrée pour revenir au menu principal...");
         scanner.nextLine();
     }
 
