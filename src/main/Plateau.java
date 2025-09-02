@@ -49,6 +49,14 @@ public class Plateau {
         this.placerPiece(7, 7, new Tour(Couleur.BLANC));
     }
 
+    public void initPlateauVierge() {
+        for (int i = 0; i < 8; i++) {
+            for (int k = 0; k < 8; k++) {
+                this.plateau[i][k] = null;
+            }
+        }
+    }
+
     public void initPlateauCouleur() {
         for (int i = 0; i < 8; i++) {
             for (int k = 0; k < 8; k++) {

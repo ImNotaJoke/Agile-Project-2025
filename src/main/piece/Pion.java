@@ -57,12 +57,25 @@ public class Pion extends Piece {
         return pionMange(estBlanc, plateau, oldPosition, newPosition);
     }
 
+    public boolean promotion(Plateau plateau, int[] position) {
+        Piece[][] plat = plateau.getPlateau();
+        Couleur couleur = plat[position[0]][position[1]].getColor();
+        if(position[0] == 0 && position[0] == 7){
+            System.out.println("Promotion du pion en dame");
+            plat[position[0]][position[1]] = new Dame(couleur);
+            plateau.setPlateau(plat);
+            return true;
+        }
+        return false;
+    }
+
     public boolean move(Plateau plateau, int[] oldPosition, int[] newPosition) {
         Piece[][] plat = plateau.getPlateau();
         if (this.moveIsOk(plat, oldPosition, newPosition)) {
             plat[newPosition[0]][newPosition[1]] = plat[oldPosition[0]][oldPosition[1]];
             plat[oldPosition[0]][oldPosition[1]] = null;
             plateau.setPlateau(plat);
+            this.promotion(plateau, newPosition);
             return true;
         } else {
             System.out.println("Mouvement impossible pour le pion");
