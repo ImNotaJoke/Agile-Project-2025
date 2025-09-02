@@ -1,6 +1,8 @@
 package main.piece;
 
 import main.Couleur;
+import main.Plateau;
+import main.Plateau;
 
 public class Pion extends Piece {
     public Pion(Couleur color) {
@@ -8,47 +10,64 @@ public class Pion extends Piece {
     }
 
     public boolean pionMange(boolean estBlanc, Piece[][] plateau, int[] oldPosition, int[] newPosition) {
-        if (estBlanc) {
-            if(newPosition[0] == oldPosition[0]+1)
-            plateau[][]
+        int oldX = oldPosition[0];
+        int oldY = oldPosition[1];
+        int newX = newPosition[0];
+        int newY = newPosition[1];
+
+        // Vérifie que la nouvelle position est bien sur le plateau
+        if (newX < 0 || newX > 7 || newY < 0 || newY > 7) {
+            return false;
         }
+
+        // Mouvement du pion blanc (avance vers le bas de la matrice si [0][0] est en
+        // haut à gauche)
+        if (estBlanc) {
+            if (newX == oldX + 1 && Math.abs(newY - oldY) == 1) {
+                Piece cible = plateau[newX][newY];
+                return (cible != null && cible.getColor() != Couleur.BLANC);
+            }
+        }
+        // Mouvement du pion noir (avance vers le haut de la matrice)
+        else {
+            if (newX == oldX - 1 && Math.abs(newY - oldY) == 1) {
+                Piece cible = plateau[newX][newY];
+                return (cible != null && cible.getColor() != Couleur.NOIR);
+            }
+        }
+        return false;
     }
 
     public boolean moveIsOk(Piece[][] plateau, int[] oldPosition, int[] newPosition) {
         boolean estBlanc = super.getColor() == Couleur.BLANC;
         if (estBlanc) {
             if (plateau[oldPosition[0] + 1][oldPosition[1]] == null) {
-                if (newPosition[1] <= 7 && newPosition[1] >= 0 && newPosition[0] >= 0 && newPosition[0] <= 7
+                if (newPosition[1] <= 7 && newPosition[1] >= 0 && newPosition[0] >= 0 && newPosition[0] < 7
                         && newPosition[0] == oldPosition[0] + 1) {
                     return true;
-                } else {
-                    return false;
                 }
-            } else {
-                return false;
             }
         } else {
-            if (plateau[oldPosition[0] - 1][oldPosition[1] - 1] == null) {
-                if (newPosition[1] =< 7 && newPosition[1] >= 0 && newPosition[0] >= 0 && newPosition[0] <= 7
+            if (plateau[oldPosition[0] - 1][oldPosition[1]] == null) {
+                if (newPosition[1] <= 7 && newPosition[1] >= 0 && newPosition[0] > 0 && newPosition[0] <= 7
                         && newPosition[0] == oldPosition[0] - 1) {
                     return true;
-                } else {
-                    return false;
                 }
-            } else {
-                return false;
             }
         }
+        return pionMange(estBlanc, plateau, oldPosition, newPosition);
     }
 
-    public Piece[][] move(Piece[][] plateau, int[] oldPosition, int[] newPosition) {
-        if (this.moveIsOk(plateau, oldPosition, newPosition)) {
-            plateau[newPosition[0]][newPosition[1]] = plateau[oldPosition[0]][oldPosition[1]];
-            plateau[oldPosition[0]][oldPosition[1]] = null;
-            return plateau;
+    public boolean move(Plateau plateau, int[] oldPosition, int[] newPosition) {
+        Piece[][] plat = plateau.getPlateau();
+        if (this.moveIsOk(plat, oldPosition, newPosition)) {
+            plat[newPosition[0]][newPosition[1]] = plat[oldPosition[0]][oldPosition[1]];
+            plat[oldPosition[0]][oldPosition[1]] = null;
+            plateau.setPlateau(plat);
+            return true;
         } else {
             System.out.println("Mouvement impossible pour le pion");
-            return null;
+            return false;
         }
     }
 

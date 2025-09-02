@@ -1,6 +1,7 @@
 package main.piece;
 
 import main.Couleur;
+import main.Plateau;
 
 public class Fou extends Piece {
     public Fou(Couleur color) {
@@ -12,4 +13,7 @@ public class Fou extends Piece {
                 - arriveColonne)));
     }
 
+    public boolean moveIsOk(Piece[][] plateau, int[] oldPosition, int[] newPosition) {
+        return true;
+    }
 }

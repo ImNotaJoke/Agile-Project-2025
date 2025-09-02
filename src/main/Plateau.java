@@ -15,6 +15,8 @@ public class Plateau {
     public Plateau() {
         this.plateau = new Piece[8][8];
         this.plateauCouleur = new String[8][8];
+        this.initPlateauCouleur();
+        this.initPlateau();
     }
 
     public void initPlateau() {
@@ -66,7 +68,7 @@ public class Plateau {
                 if (plateau[i][k] == null) {
                     s += plateauCouleur[i][k];
                 } else {
-                    s += plateau[i][k].getPiece();
+                    s += plateau[i][k].getPiece() + " ";
                 }
             }
             s += "\n";
