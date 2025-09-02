@@ -8,5 +8,7 @@ public class Chess{
         System.out.println(plateau);
 
         Joueur j1 = new Joueur("a",Couleur.NOIR);
+        j1.demanderDeplacement(plateau);
+        System.out.println(plateau);
     }
 }
