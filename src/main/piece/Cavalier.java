@@ -8,13 +8,12 @@ public class Cavalier extends Piece {
         super(color, PieceName.CAVALIER);
     }
 
-    private static Boolean moveIsOk(int[][] plateau, int[] oldPosition, int) {
-        return ((Math.abs(departLigne - arriveeligne) == 2 && Math.abs(departColonne - arriveColonne) == 1)
-                || (Math.abs(departLigne - arriveeligne) == 1 && Math.abs(departColonne - arriveColonne) == 2));
+    private static Boolean moveIsOk(Piece[][] plateau, int[] oldPosition, int[] newPosition) {
+        return ((Math.abs(oldPosition[0] - newPosition[0]) == 2 && Math.abs(oldPosition[1] - newPosition[1]) == 1)
+                || (Math.abs(oldPosition[0] - newPosition[0]) == 1 && Math.abs(oldPosition[1] - newPosition[1]) == 2)) && (plateau[newPosition[0]][newPosition[1]].getColor() != this.getColor());
     }
 
     public boolean move(Plateau plateau, int[] oldPosition, int[] newPosition) {
         return true;
     }
-
 }

@@ -1,10 +1,13 @@
 
 package main;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ChessWithMe {
     public static void main(String[] args) {
+
+        //Choix Nom et couleur
         Scanner sc = new Scanner(System.in); 
         System.out.println("Joueur 1 : entrez votre pseudo : ");
         String nom = sc.nextLine(); 
@@ -32,5 +35,4 @@ public class ChessWithMe {
         System.out.println(plateau);
 
     }
-
 }
