@@ -20,27 +20,32 @@ public class Menu {
 
                 switch (choix) {
                     case 1:
+                        clearScreen();
                         afficherJouer(menu); 
                         break;
                     case 2:
+                        clearScreen();
                         afficherHistorique(menu);
                         break;
                     case 3:
+                        clearScreen();
                         afficherCredits(menu);
                         break; 
                     case 4:
+                        clearScreen();
                         afficherRegles(menu);
                         break;
                     case 5:
+                        clearScreen();
                         quitter = true;
                         afficherAuRevoirASCII();
                         break;
                     default:
-                        System.out.println("\n     Choix invalide. Veuillez rÃ©essayer.\n");
+                        System.out.println("\n     Choix invalide. Veuillez réessayer.\n");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("\n     EntrÃ©e invalide. Veuillez entrer un nombre.\n");
-                menu.nextLine(); // Vider lâ€™entrÃ©e incorrecte
+                System.out.println("\n     Entrée invalide. Veuillez entrer un nombre.\n");
+                menu.nextLine(); // Vider l’entrée incorrecte
             }
         }
 
@@ -178,5 +183,10 @@ public class Menu {
     System.out.println("  / ___ \\ |_| | | | |  __/\\ V / (_) | | |    ");
     System.out.println(" /_/   \\_\\__,_| |_|  \\___| \\_/ \\___/|_|_|    ");
     System.out.println("                                             ");
+    }
+
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }

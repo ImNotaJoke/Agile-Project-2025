@@ -56,7 +56,7 @@ public class Joueur {
         int[] tabCo = new int[2];
         if(co.charAt(0) >= 'a' && co.charAt(0) <= 'h'){
             tabCo[0] = co.charAt(0) - 'a';
-            if(co.charAt(1) >= 1 && co.charAt(1) <= 8){
+            if(co.charAt(1) - '0' >= 1 && co.charAt(1) - '8'<= 8){
                 tabCo[1] = co.charAt(1) - 1;
                 return tabCo;
             }
