@@ -12,23 +12,15 @@ public class ChessWithMe {
         System.out.println("Joueur 1 : entrez votre pseudo : ");
         String nom = sc.nextLine(); 
         Couleur couleur = Couleur.demandeCouleur();
-<<<<<<< HEAD
         Joueur j1 = new Joueur(nom,couleur); //crée un joueur 1 avec couleur et pseudo 
         Scanner sc2 = new Scanner(System.in); 
         System.out.println("Joueur 2 : entrez votre pseudo : ");
         String nom2 = sc2.nextLine(); 
         Joueur j2 = new Joueur(nom2); // crée le joueur 2 seulement avec le pseudo 
-        if ( j1.getCouleur() == Couleur.BLANC){// se base sur le choix de la couleur du joueur 1 pour donner une nouvelle couleur au joueur 2 
-=======
-        Joueur j1 = new Joueur(nom,couleur); 
-        sc.close(); 
-        Scanner sc2 = new Scanner(System.in); 
-        System.out.println("Joueur 2 : entrez votre pseudo : ");
-        String nom2 = sc2.nextLine(); 
-        Joueur j2 = new Joueur(nom2); 
-        sc2.close(); 
+        if ( j1.getCouleur() == Couleur.BLANC){// se base sur le choix de la couleur du joueur 1 pour donner une nouvelle couleur au joueur 2  
+        sc2.close();
+        }
         if ( j1.getCouleur() == Couleur.BLANC){
->>>>>>> fb958a4d37dd49856e09264e6ecec8e3d8a0f601
             j2.setCouleur(Couleur.NOIR); 
         }else{
             j2.setCouleur(Couleur.BLANC); 
@@ -44,6 +36,5 @@ public class ChessWithMe {
         System.out.println(plateau);
         plateau.getPlateau()[0][0].move(plateau, new int[] { 0, 0 }, new int[] { 2, 0 });
         System.out.println(plateau);
-
     }
 }
