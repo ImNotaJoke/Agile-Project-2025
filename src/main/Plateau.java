@@ -36,14 +36,14 @@ public class Plateau {
         this.placerPiece(0, 6, new Cavalier(Couleur.NOIR));
         this.placerPiece(0, 7, new Tour(Couleur.NOIR));
 
-        this.placerPiece(0, 0, new Tour(Couleur.BLANC));
-        this.placerPiece(0, 1, new Cavalier(Couleur.BLANC));
-        this.placerPiece(0, 2, new Fou(Couleur.BLANC));
-        this.placerPiece(0, 3, new Dame(Couleur.BLANC));
-        this.placerPiece(0, 4, new Roi(Couleur.BLANC));
-        this.placerPiece(0, 5, new Fou(Couleur.BLANC));
-        this.placerPiece(0, 6, new Cavalier(Couleur.BLANC));
-        this.placerPiece(0, 7, new Tour(Couleur.BLANC));
+        this.placerPiece(7, 0, new Tour(Couleur.BLANC));
+        this.placerPiece(7, 1, new Cavalier(Couleur.BLANC));
+        this.placerPiece(7, 2, new Fou(Couleur.BLANC));
+        this.placerPiece(7, 3, new Dame(Couleur.BLANC));
+        this.placerPiece(7, 4, new Roi(Couleur.BLANC));
+        this.placerPiece(7, 5, new Fou(Couleur.BLANC));
+        this.placerPiece(7, 6, new Cavalier(Couleur.BLANC));
+        this.placerPiece(7, 7, new Tour(Couleur.BLANC));
     }
 
     public void initPlateauCouleur() {

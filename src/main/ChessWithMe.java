@@ -18,12 +18,6 @@ public class ChessWithMe {
 
         Piece p1 = new Pion(Couleur.NOIR);
 
-        plateau.placerPiece(7, 5, p1);
-
         System.out.println(plateau);
-
-        System.out.println(joueur);
-        System.out.println(joueur2);
-
     }
 }

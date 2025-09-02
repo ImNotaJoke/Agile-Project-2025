@@ -9,7 +9,7 @@ public class Pion extends Piece {
 
     public boolean pionMange(boolean estBlanc, Piece[][] plateau, int[] oldPosition, int[] newPosition) {
         if (estBlanc) {
-            if(newPosition[0] == oldPosition[1]+1)
+            if(newPosition[0] == oldPosition[0]+1)
             plateau[][]
         }
     }
@@ -18,8 +18,8 @@ public class Pion extends Piece {
         boolean estBlanc = super.getColor() == Couleur.BLANC;
         if (estBlanc) {
             if (plateau[oldPosition[0] + 1][oldPosition[1]] == null) {
-                if (newPosition[1] <= 7 && newPosition[1] > 0 && newPosition[0] >= 0 && newPosition[0] <= 7
-                        && newPosition[1] == oldPosition[1] + 1) {
+                if (newPosition[1] <= 7 && newPosition[1] >= 0 && newPosition[0] >= 0 && newPosition[0] <= 7
+                        && newPosition[0] == oldPosition[0] + 1) {
                     return true;
                 } else {
                     return false;
@@ -29,8 +29,8 @@ public class Pion extends Piece {
             }
         } else {
             if (plateau[oldPosition[0] - 1][oldPosition[1] - 1] == null) {
-                if (newPosition[1] < 7 && newPosition[1] >= 0 && newPosition[0] >= 0 && newPosition[0] <= 7
-                        && newPosition[1] == oldPosition[1] - 1) {
+                if (newPosition[1] =< 7 && newPosition[1] >= 0 && newPosition[0] >= 0 && newPosition[0] <= 7
+                        && newPosition[0] == oldPosition[0] - 1) {
                     return true;
                 } else {
                     return false;
