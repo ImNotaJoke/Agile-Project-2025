@@ -1,7 +1,5 @@
 package main;
 
-import java.util.Scanner;
-
 public class Joueur {
     /* Attributs */
     private String pseudo;
@@ -45,8 +43,4 @@ public class Joueur {
         }
         return true;
     }
-
-    public void demanderDeplacement() {
-
-    };
 }
