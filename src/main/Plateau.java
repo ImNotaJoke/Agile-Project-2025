@@ -9,6 +9,10 @@ import main.piece.Roi;
 import main.piece.Tour;
 
 public class Plateau {
+
+    public final String[] CASES_LETTRES = { "a", "b", "c", "d", "e", "f", "g", "h" };
+    public static final String[] CASES_NUMEROS = { "1", "2", "3", "4", "5", "6", "7", "8" };
+
     private Piece[][] plateau;
     private String[][] plateauCouleur;
 
@@ -62,7 +66,7 @@ public class Plateau {
 
     @Override
     public String toString() {
-        String s = "";
+        String s = " a b c d e f g h ";
 
         for (int i = 0; i < 8; i++) {
             for (int k = 0; k < 8; k++) {
