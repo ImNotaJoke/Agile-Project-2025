@@ -11,6 +11,7 @@ public class Menu {
         boolean quitter = false;    
 
         while (!quitter) {
+            fakeClear();
             afficherTitre();
             afficherMenu();
             try {
@@ -20,23 +21,23 @@ public class Menu {
 
                 switch (choix) {
                     case 1:
-                        clearScreen();
+                        fakeClear();
                         afficherJouer(menu); 
                         break;
                     case 2:
-                        clearScreen();
+                        fakeClear();
                         afficherHistorique(menu);
                         break;
                     case 3:
-                        clearScreen();
+                        fakeClear();
                         afficherCredits(menu);
                         break; 
                     case 4:
-                        clearScreen();
+                        fakeClear();
                         afficherRegles(menu);
                         break;
                     case 5:
-                        clearScreen();
+                        fakeClear();
                         quitter = true;
                         afficherAuRevoirASCII();
                         break;
@@ -185,8 +186,8 @@ public class Menu {
     System.out.println("                                             ");
     }
 
-    public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+    public static void fakeClear() {
+        System.out.println("\n".repeat(50));
     }
+
 }
