@@ -19,7 +19,7 @@ public class HistoriqueJ implements Serializable{
         public ArrayList<Joueur> getAllJoueurs(){
             return this.ancienJoueurs; 
         }
-        public String toString(){
+        public String toString(){ 
             return this.ancienJoueurs.toString(); 
         }
         public boolean equals(Object obj){
