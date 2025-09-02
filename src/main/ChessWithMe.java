@@ -32,6 +32,8 @@ public class ChessWithMe {
         System.out.println(plateau);
         plateau.getPlateau()[0][0].move(plateau, new int[] { 0, 0 }, new int[] { 2, 0 });
         System.out.println(plateau);
+        plateau.getPlateau()[0][1].move(plateau, new int[] { 0, 1 }, new int[] { 2, 2 });
+        System.out.println(plateau);
 
     }
 

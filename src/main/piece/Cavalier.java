@@ -8,13 +8,23 @@ public class Cavalier extends Piece {
         super(color, PieceName.CAVALIER);
     }
 
-    private static Boolean chemin(int departLigne, int departColonne, int arriveeligne, int arriveColonne) {
-        return ((Math.abs(departLigne - arriveeligne) == 2 && Math.abs(departColonne - arriveColonne) == 1)
-                || (Math.abs(departLigne - arriveeligne) == 1 && Math.abs(departColonne - arriveColonne) == 2));
-    }
+    public Boolean moveIsOk(Piece[][] plateau, int[] oldPosition, int[] newPosition) {
+        return ((Math.abs(oldPosition[0] - newPosition[0]) == 2 && Math.abs(oldPosition[1] - newPosition[1]) == 1)
+                || (Math.abs(oldPosition[0] - newPosition[0]) == 1 && Math.abs(oldPosition[1] - newPosition[1]) == 2)) 
+                && (plateau[newPosition[0]][newPosition[1]] == null);
+        }
 
     public boolean move(Plateau plateau, int[] oldPosition, int[] newPosition) {
-        return true;
+        Piece[][] plat = plateau.getPlateau();
+        if (this.moveIsOk(plat, oldPosition, newPosition)) {
+            plat[newPosition[0]][newPosition[1]] = plat[oldPosition[0]][oldPosition[1]];
+            plat[oldPosition[0]][oldPosition[1]] = null;
+            plateau.setPlateau(plat);
+            return true;
+        } else {
+            System.out.println("Mouvement impossible pour le cavalier");
+            return false;
+        }
     }
 
 }

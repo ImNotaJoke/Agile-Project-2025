@@ -44,17 +44,17 @@ public abstract class Piece {
 
         while (xPlus != 0 || yPlus != 0) {
             if (xPlus > 0) {
-                xOld += 1;
+                xOld -= 1;
                 xPlus -= 1;
             } else if (xPlus < 0) {
-                xOld += -1;
+                xOld += 1;
                 xPlus += 1;
             }
             if (yPlus > 0) {
-                yOld += 1;
+                yOld -= 1;
                 yPlus -= 1;
             } else if (yPlus < 0) {
-                yOld += -1;
+                yOld += 1;
                 yPlus += 1;
             }
             if (plateau[xOld][yOld] != null) {
