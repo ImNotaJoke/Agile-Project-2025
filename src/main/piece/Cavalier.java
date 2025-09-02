@@ -13,7 +13,7 @@ public class Cavalier extends Piece {
                 || (Math.abs(departLigne - arriveeligne) == 1 && Math.abs(departColonne - arriveColonne) == 2));
     }
 
-    public boolean moveIsOk(Piece[][] plateau, int[] oldPosition, int[] newPosition) {
+    public boolean move(Plateau plateau, int[] oldPosition, int[] newPosition) {
         return true;
     }
 

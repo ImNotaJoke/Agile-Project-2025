@@ -8,7 +8,7 @@ public class Dame extends Piece {
         super(color, PieceName.DAME);
     }
 
-    public boolean moveIsOk(Piece[][] plateau, int[] oldPosition, int[] newPosition) {
+    public boolean move(Plateau plateau, int[] oldPosition, int[] newPosition) {
         return true;
     }
 }

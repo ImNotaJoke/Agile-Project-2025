@@ -3,7 +3,7 @@ package main.piece;
 import main.Couleur;
 import main.Plateau;
 
-public class Roi extends Piece {
+public class Rextends Piece {
     public Roi(Couleur color) {
         super(color, PieceName.ROI);
     }

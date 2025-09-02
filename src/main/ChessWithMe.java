@@ -8,7 +8,7 @@ public class ChessWithMe {
 
         Plateau plateau = new Plateau();
 
-        plateau.getPlateau()[1][0].move(plateau,new int[]{1,0},new int[2,0])
+        plateau.getPlateau()[1][0].move(plateau,new int[]{1,0},new int[]{2,0});
 
         }
 

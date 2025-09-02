@@ -13,7 +13,7 @@ public class Fou extends Piece {
                 - arriveColonne)));
     }
 
-    public boolean moveIsOk(Piece[][] plateau, int[] oldPosition, int[] newPosition) {
+    public boolean move(Plateau plateau, int[] oldPosition, int[] newPosition) {
         return true;
     }
 }
