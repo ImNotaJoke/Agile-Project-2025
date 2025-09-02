@@ -28,8 +28,6 @@ public class Joueur {
         this.couleur = couleur;
     }
 
-    // un joueur ne peux changer de couleur au cours d'une partie //
-    // faire en sorte que l'user entre lui même son pseudo //
     /* Methodes */
     @Override
     public String toString() {
@@ -52,21 +50,4 @@ public class Joueur {
         }
         return true;
     }
-    // public static void main(String[] args) {
-    // Joueur j = new Joueur("aa", Couleur.BLANC);
-    // System.out.println(j + "aaaaaaaaaaaaaaaaaaaaaaaaa");
-    // }
-
-    // public String choixPseudo() {
-
-    // Scanner rep = new Scanner(System.in);
-    // System.out.println(" Joueur 1 :Entrez votre pseudo: ");
-    // String nom = rep.nextLine();
-    // joueur1 = new Joueur(nom);
-    // Scanner rep2 = new Scanner(System.in);
-    // System.out.println("Joueur 2 : Entrez votre pseudo: ");
-    // String nomj2 = rep2.nextLine();
-    // joueur2 = new Joueur(nomj2);
-    // }
-
 }
