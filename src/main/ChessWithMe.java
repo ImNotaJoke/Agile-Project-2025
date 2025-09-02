@@ -3,8 +3,6 @@ package main;
 
 import java.util.Scanner;
 
-import main.piece.Piece;
-
 public class ChessWithMe {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in); 
