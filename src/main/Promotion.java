@@ -1,6 +1,8 @@
 
 package main;
 
+import main.piece.Pion;
+
 public class Promotion {
     public static void main(String[] args) {
         Plateau plateau = new Plateau();
