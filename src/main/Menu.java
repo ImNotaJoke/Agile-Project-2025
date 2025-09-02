@@ -2,6 +2,7 @@ package main;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Menu {
 
@@ -91,7 +92,14 @@ public class Menu {
     // Affiche l'historique des parties
     public static void afficherHistorique(Scanner scanner) {
         afficherHistoriqueAscii();
-        System.out.println("Aucune partie enregistrée pour le moment.\n");
+        String nom = "Joueur1";
+        Couleur couleur = Couleur.BLANC;
+        Joueur j1 = new Joueur(nom,couleur);
+        ArrayList<Joueur> joueurs = new ArrayList<>();
+        joueurs.add(j1);
+        HistoriqueJ historique = new HistoriqueJ(joueurs);
+
+        System.out.println("Historique des parties " + historique.toString() + " :\n");
 
         System.out.println("Appuyez sur Entrée pour revenir au menu principal...");
         scanner.nextLine();
