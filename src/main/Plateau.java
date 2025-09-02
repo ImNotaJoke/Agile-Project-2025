@@ -1,10 +1,10 @@
 package main;
 
-import main.piece.Piece;
-import main.piece.Pion;
+import main.piece.Cavalier;
 import main.piece.Dame;
 import main.piece.Fou;
-import main.piece.Cavalier;
+import main.piece.Piece;
+import main.piece.Pion;
 import main.piece.Roi;
 import main.piece.Tour;
 
@@ -82,7 +82,7 @@ public class Plateau {
                     s += plateau[i][k].getPiece() + " ";
                 }
             }
-            s += " " + i+1;
+            s += " " + (i+1);
             s += "\n";
         }
         s += "  a b c d e f g h  ";
