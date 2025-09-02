@@ -5,35 +5,30 @@ import java.util.Scanner;
 public enum Couleur {
     BLANC, NOIR;
 
-    public static Couleur demandeCouleur(){
+    public static Couleur demandeCouleur() {
         Scanner sc = new Scanner(System.in);
-        int choix = 0;
+        String saisie;
 
-        while (choix != 1 && choix != 2) {
+        while (true) {
             System.out.println("Choisissez votre couleur :");
             System.out.println("1 - Blanc");
             System.out.println("2 - Noir");
             System.out.print("Votre choix : ");
-            
-            if (sc.hasNextInt()) {
-                choix = sc.nextInt();
-            } else {
-                sc.next();
+
+            saisie = sc.nextLine().trim();
+
+            if (saisie.isEmpty()) {
+                System.out.println("Veuillez entrer 1 ou 2.");
+                continue;
             }
 
-            if (choix != 1 && choix != 2) {
+            if (saisie.equals("1")) {
+                return Couleur.BLANC;
+            } else if (saisie.equals("2")) {
+                return Couleur.NOIR;
+            } else {
                 System.out.println("Choix invalide, veuillez entrer 1 ou 2.");
             }
         }
-
-        Couleur couleurChoisie;
-
-        if(choix == 1){
-            couleurChoisie = Couleur.BLANC;
-        }
-        else{
-            couleurChoisie = Couleur.NOIR;
-        }
-        return couleurChoisie;
     }
 }

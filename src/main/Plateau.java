@@ -1,6 +1,12 @@
 package main;
 
 import main.piece.Piece;
+import main.piece.Pion;
+import main.piece.Dame;
+import main.piece.Fou;
+import main.piece.Cavalier;
+import main.piece.Roi;
+import main.piece.Tour;
 
 public class Plateau {
     private Piece[][] plateau;
@@ -17,6 +23,27 @@ public class Plateau {
                 this.plateau[i][k] = null;
             }
         }
+        for (int i = 0; i < 8; i++) {
+            this.placerPiece(1, i, new Pion(Couleur.NOIR));
+            this.placerPiece(6, i, new Pion(Couleur.BLANC));
+        }
+        this.placerPiece(0, 0, new Tour(Couleur.NOIR));
+        this.placerPiece(0, 1, new Cavalier(Couleur.NOIR));
+        this.placerPiece(0, 2, new Fou(Couleur.NOIR));
+        this.placerPiece(0, 3, new Dame(Couleur.NOIR));
+        this.placerPiece(0, 4, new Roi(Couleur.NOIR));
+        this.placerPiece(0, 5, new Fou(Couleur.NOIR));
+        this.placerPiece(0, 6, new Cavalier(Couleur.NOIR));
+        this.placerPiece(0, 7, new Tour(Couleur.NOIR));
+
+        this.placerPiece(0, 0, new Tour(Couleur.BLANC));
+        this.placerPiece(0, 1, new Cavalier(Couleur.BLANC));
+        this.placerPiece(0, 2, new Fou(Couleur.BLANC));
+        this.placerPiece(0, 3, new Dame(Couleur.BLANC));
+        this.placerPiece(0, 4, new Roi(Couleur.BLANC));
+        this.placerPiece(0, 5, new Fou(Couleur.BLANC));
+        this.placerPiece(0, 6, new Cavalier(Couleur.BLANC));
+        this.placerPiece(0, 7, new Tour(Couleur.BLANC));
     }
 
     public void initPlateauCouleur() {
@@ -51,4 +78,21 @@ public class Plateau {
     public void placerPiece(int i, int k, Piece piece) {
         this.plateau[i][k] = piece;
     }
+
+    public Piece[][] getPlateau() {
+        return plateau;
+    }
+
+    public void setPlateau(Piece[][] plateau) {
+        this.plateau = plateau;
+    }
+
+    public String[][] getPlateauCouleur() {
+        return plateauCouleur;
+    }
+
+    public void setPlateauCouleur(String[][] plateauCouleur) {
+        this.plateauCouleur = plateauCouleur;
+    }
+
 }

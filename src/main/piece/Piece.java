@@ -5,7 +5,7 @@ import main.Couleur;
 public class Piece {
     Couleur color;
     PieceName name;
-    int[] position;
+    
 
     public Piece(Couleur color, PieceName name) {
         this.color = color;
@@ -17,7 +17,7 @@ public class Piece {
     }
 
     public String getPiece() {
-        if (this.color == Couleur.NOIR) {
+        if (this.color == Couleur.BLANC) {
             if (this.name == PieceName.PION) {
                 return "♟";
             } else if (this.name == PieceName.TOUR) {
@@ -46,13 +46,5 @@ public class Piece {
                 return "♔";
             }
         }
-    }
-
-    public int[] getPosition() {
-        return this.position;
-    }
-
-    public void setPosition(int[] position) {
-        this.position = position;
     }
 }

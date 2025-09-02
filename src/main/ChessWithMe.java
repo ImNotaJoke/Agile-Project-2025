@@ -1,7 +1,13 @@
 
 package main;
 
-import main.piece.*;
+import main.piece.Piece;
+import main.piece.Pion;
+import main.piece.Dame;
+import main.piece.Fou;
+import main.piece.Cavalier;
+import main.piece.Roi;
+import main.piece.Tour;
 
 public class ChessWithMe {
     public static void main(String[] args) {
@@ -13,7 +19,7 @@ public class ChessWithMe {
         CreationJoueur joueur = new CreationJoueur("Bruno", Couleur.BLANC);
         CreationJoueur joueur2 = new CreationJoueur("Antoine", Couleur.NOIR);
 
-        Piece p1 = new Pion(Couleur.NOIR, new int[] { 1, 1 });
+        Piece p1 = new Pion(Couleur.NOIR);
 
         plateau.placerPiece(7, 5, p1);
 
