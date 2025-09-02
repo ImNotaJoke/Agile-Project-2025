@@ -5,11 +5,9 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "java",
-            "name": "Couleur",
+            "type": "jdk",
             "request": "launch",
-            "mainClass": "main.Couleur",
-            "projectName": "groupe-15_a6ee6412"
+            "name": "Launch Java App"
         }
     ]
 }

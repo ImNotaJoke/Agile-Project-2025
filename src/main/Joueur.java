@@ -57,4 +57,16 @@ public class Joueur {
     // System.out.println(j + "aaaaaaaaaaaaaaaaaaaaaaaaa");
     // }
 
+    // public String choixPseudo() {
+
+    // Scanner rep = new Scanner(System.in);
+    // System.out.println(" Joueur 1 :Entrez votre pseudo: ");
+    // String nom = rep.nextLine();
+    // joueur1 = new Joueur(nom);
+    // Scanner rep2 = new Scanner(System.in);
+    // System.out.println("Joueur 2 : Entrez votre pseudo: ");
+    // String nomj2 = rep2.nextLine();
+    // joueur2 = new Joueur(nomj2);
+    // }
+
 }

@@ -7,8 +7,8 @@ import main.piece.Piece;
 
 public class ChessWithMe {
     public static void main(String[] args) {
-        Joueur joueur1;
-        Joueur joueur2;
+        // Joueur joueur1;
+        // Joueur joueur2;
 
         Plateau plateau = new Plateau();
 
@@ -19,28 +19,37 @@ public class ChessWithMe {
         plateau.getPlateau()[0][0].move(plateau, new int[] { 0, 0 }, new int[] { 2, 0 });
         System.out.println(plateau);
 
-        System.out.println(nom + "\n");
+        // System.out.println(nom + "\n");
+        // Couleur couleur = Couleur.demandeCouleur();
+        // joueur1.setCouleur(couleur);
+        // if (couleur == Couleur.NOIR) {
+        //     joueur2.setCouleur(Couleur.BLANC);
+        // } else {
+        //     joueur2.setCouleur(Couleur.NOIR);
+        // }
+
+        Scanner sc = new Scanner(System.in); 
+        System.out.println("Joueur 1 : entrez votre pseudo : ");
+        String nom = sc.nextLine(); 
         Couleur couleur = Couleur.demandeCouleur();
-        joueur1.setCouleur(couleur);
-        if (couleur == Couleur.NOIR) {
-            joueur2.setCouleur(Couleur.BLANC);
-        } else {
-            joueur2.setCouleur(Couleur.NOIR);
-        }
+        Joueur j1 = new Joueur(nom,couleur); 
+
+
 
     }
 
-    public void choixPseudo() {
+    // public void choixPseudo() {
 
-        Joueur joueur1;
-        Joueur joueur2;
-        Scanner rep = new Scanner(System.in);
-        System.out.println(" Joueur 1 :Entrez votre pseudo: ");
-        String nom = rep.nextLine();
-        joueur1 = new Joueur(nom);
-        Scanner rep2 = new Scanner(System.in);
-        System.out.println("Joueur 2 : Entrez votre pseudo: ");
-        String nomj2 = rep2.nextLine();
-        joueur2 = new Joueur(nomj2);
-    }
+    //     Joueur joueur1;
+    //     Joueur joueur2;
+    //     Scanner rep = new Scanner(System.in);
+    //     System.out.println(" Joueur 1 :Entrez votre pseudo: ");
+    //     String nom = rep.nextLine();
+    //     joueur1 = new Joueur(nom);
+    //     Scanner rep2 = new Scanner(System.in);
+    //     System.out.println("Joueur 2 : Entrez votre pseudo: ");
+    //     String nomj2 = rep2.nextLine();
+    //     joueur2 = new Joueur(nomj2);
+    // }
+
 }
