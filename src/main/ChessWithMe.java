@@ -11,12 +11,12 @@ public class ChessWithMe {
         System.out.println("Joueur 1 : entrez votre pseudo : ");
         String nom = sc.nextLine(); 
         Couleur couleur = Couleur.demandeCouleur();
-        Joueur j1 = new Joueur(nom,couleur); 
+        Joueur j1 = new Joueur(nom,couleur); //crée un joueur 1 avec couleur et pseudo 
         Scanner sc2 = new Scanner(System.in); 
         System.out.println("Joueur 2 : entrez votre pseudo : ");
         String nom2 = sc2.nextLine(); 
-        Joueur j2 = new Joueur(nom2); 
-        if ( j1.getCouleur() == Couleur.BLANC){
+        Joueur j2 = new Joueur(nom2); // crée le joueur 2 seulement avec le pseudo 
+        if ( j1.getCouleur() == Couleur.BLANC){// se base sur le choix de la couleur du joueur 1 pour donner une nouvelle couleur au joueur 2 
             j2.setCouleur(Couleur.NOIR); 
         }else{
             j2.setCouleur(Couleur.BLANC); 
