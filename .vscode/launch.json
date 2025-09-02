@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Menu",
+            "request": "launch",
+            "mainClass": "main.Menu",
+            "projectName": "groupe-15_436f59d5"
+        },
+        {
+            "type": "java",
+            "name": "ChessWithMe",
+            "request": "launch",
+            "mainClass": "main.ChessWithMe",
+            "projectName": "groupe-15_436f59d5"
+        },
+        {
+            "type": "java",
             "name": "Couleur",
             "request": "launch",
             "mainClass": "main.Couleur",

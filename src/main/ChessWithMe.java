@@ -9,6 +9,11 @@ public class ChessWithMe {
     public static void main(String[] args) {
         Joueur joueur1;
         Joueur joueur2;
+        String nom;
+        nom = "ChessWithMe";
+
+        joueur1 = new Joueur("Joueur 1");
+        joueur2 = new Joueur("Joueur 2");
 
         Plateau plateau = new Plateau();
 

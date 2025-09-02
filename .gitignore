@@ -1,3 +1,4 @@
-/lib
-/res
+lib/
+res/
 *.Class
+.vscode/
