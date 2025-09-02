@@ -43,9 +43,6 @@ public abstract class Piece {
         int yPlus = yOld - newPosition[1];
 
         while (xPlus != 0 || yPlus != 0) {
-            if (plateau[xOld][yOld] != null) {
-                return false;
-            }
             if (xPlus > 0) {
                 xOld += 1;
                 xPlus -= 1;
@@ -59,6 +56,9 @@ public abstract class Piece {
             } else if (yPlus < 0) {
                 yOld += -1;
                 yPlus += 1;
+            }
+            if (plateau[xOld][yOld] != null) {
+                return false;
             }
         }
         return true;
