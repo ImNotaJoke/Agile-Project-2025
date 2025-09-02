@@ -11,6 +11,10 @@ public class Joueur {
         this.couleur = coul;
     }
 
+    public Joueur(String pseudo) {
+        this.pseudo = pseudo;
+    }
+
     /* Getter */
     public String getPseudo() {
         return this.pseudo;
@@ -18,6 +22,10 @@ public class Joueur {
 
     public Couleur getCouleur() {
         return this.couleur;
+    }
+
+    public void setCouleur(Couleur couleur) {
+        this.couleur = couleur;
     }
 
     // un joueur ne peux changer de couleur au cours d'une partie //

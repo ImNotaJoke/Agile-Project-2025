@@ -10,9 +10,6 @@ import main.piece.Tour;
 
 public class Plateau {
 
-    public final String[] CASES_LETTRES = { "a", "b", "c", "d", "e", "f", "g", "h" };
-    public static final String[] CASES_NUMEROS = { "1", "2", "3", "4", "5", "6", "7", "8" };
-
     private Piece[][] plateau;
     private String[][] plateauCouleur;
 
@@ -66,9 +63,10 @@ public class Plateau {
 
     @Override
     public String toString() {
-        String s = " a b c d e f g h ";
-
+        String s = "  a b c d e f g h  ";
+        s += "\n";
         for (int i = 0; i < 8; i++) {
+            s += i + " ";
             for (int k = 0; k < 8; k++) {
                 if (plateau[i][k] == null) {
                     s += plateauCouleur[i][k];
@@ -76,9 +74,10 @@ public class Plateau {
                     s += plateau[i][k].getPiece() + " ";
                 }
             }
+            s += " " + i;
             s += "\n";
         }
-
+        s += "  a b c d e f g h  ";
         return s;
     }
 

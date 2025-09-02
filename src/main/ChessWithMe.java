@@ -13,12 +13,34 @@ public class ChessWithMe {
         Plateau plateau = new Plateau();
 
         plateau.getPlateau()[1][0].move(plateau, new int[] { 1, 0 }, new int[] { 2, 0 });
-
+        System.out.println(plateau);
+        plateau.getPlateau()[2][0].move(plateau, new int[] { 2, 0 }, new int[] { 3, 0 });
+        System.out.println(plateau);
+        plateau.getPlateau()[0][0].move(plateau, new int[] { 0, 0 }, new int[] { 2, 0 });
         System.out.println(plateau);
 
+        System.out.println(nom + "\n");
+        Couleur couleur = Couleur.demandeCouleur();
+        joueur1.setCouleur(couleur);
+        if (couleur == Couleur.NOIR) {
+            joueur2.setCouleur(Couleur.BLANC);
+        } else {
+            joueur2.setCouleur(Couleur.NOIR);
+        }
+
+    }
+
+    public void choixPseudo() {
+
+        Joueur joueur1;
+        Joueur joueur2;
         Scanner rep = new Scanner(System.in);
-        System.out.println(("Entrez votre pseudo: "));
+        System.out.println(" Joueur 1 :Entrez votre pseudo: ");
         String nom = rep.nextLine();
-        Joueur j1 = new Joueur (nom)
+        joueur1 = new Joueur(nom);
+        Scanner rep2 = new Scanner(System.in);
+        System.out.println("Joueur 2 : Entrez votre pseudo: ");
+        String nomj2 = rep2.nextLine();
+        joueur2 = new Joueur(nomj2);
     }
 }
