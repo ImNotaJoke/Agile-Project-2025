@@ -16,9 +16,6 @@ public class ChessWithMe {
         plateau.initPlateau();
         plateau.initPlateauCouleur();
 
-        CreationJoueur joueur = new CreationJoueur("Bruno", Couleur.BLANC);
-        CreationJoueur joueur2 = new CreationJoueur("Antoine", Couleur.NOIR);
-
         Piece p1 = new Pion(Couleur.NOIR);
 
         plateau.placerPiece(7, 5, p1);
