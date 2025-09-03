@@ -52,45 +52,67 @@ public class Joueur {
         return true;
     }
 
-    public int[] transformerCo(String co){
-        int[] tabCo = new int[2];
-        if(Character.toLowerCase(co.charAt(0)) >= 'a' && Character.toLowerCase(co.charAt(0)) <= 'h'){
-            tabCo[1] = Character.toLowerCase(co.charAt(0)) - 'a';
-            if(co.charAt(1) - '0' >= 1 && co.charAt(1) - '7' <= 8){
-                tabCo[0] = co.charAt(1) - '0' - 1;
-                return tabCo;
+    public int[] choixDeplacement(String entree) {
+        Scanner scanner = new Scanner(System.in);
+        String input;
+        char c1;
+        char c2;
+        int[] tabco = new int[2];
+
+        while (true) {
+            try {
+                System.out.println(entree);
+                input = scanner.nextLine().trim();
+
+                // Vérification longueur exacte = 2
+                if (input.length() != 2) {
+                    throw new IllegalArgumentException("Format de position invalide. Utilisez le format 'a2'.");
+                }
+
+                c1 = input.charAt(0);
+                c2 = input.charAt(1);
+
+                boolean c1IsLetter = (c1 >= 'a' && c1 <= 'h') || (c1 >= 'A' && c1 <= 'H');
+                boolean c1IsDigit  = c1 >= '1' && c1 <= '8';
+
+                boolean c2IsLetter = (c2 >= 'a' && c2 <= 'h') || (c2 >= 'A' && c2 <= 'H');
+                boolean c2IsDigit  = c2 >= '1' && c2 <= '8';
+
+                // Vérifie qu'il y a exactement 1 lettre et 1 chiffre
+                if ((c1IsLetter && c2IsDigit) || (c1IsDigit && c2IsLetter)) {
+                    System.out.println("Entrée valide : " + input);
+                    tabco[0] = input.charAt(1) - '0' - 1;
+                    tabco[1] = Character.toLowerCase(input.charAt(0)) - 'a';
+                    return tabco;
+                } else {
+                    throw new IllegalArgumentException("Position invalide. Utilisez une position comme 'a2' ou '2a'.");
+                }
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                // boucle continue → redemande à l’utilisateur
             }
         }
-        return null;
     }
 
     public boolean demanderDeplacement(Plateau plateau){
-        String co1;
-        String co2;
-        int[] co1tab;
-        int[] co2tab;
+        int[] co1;
+        int[] co2;
 
-        Scanner sc = new Scanner(System.in); 
-        System.out.println(this.pseudo + " quel piece veux tu bouger ?");
-        co1 = sc.nextLine();
-        co1tab = transformerCo(co1);
-        if(co1tab == null) return false;
+        co1 = choixDeplacement("Choisissez une pièce à déplacer (ex: a2 ou 2a): ");
 
-        if(plateau.getPlateau()[co1tab[0]][co1tab[1]] == null){
+        if(plateau.getPlateau()[co1[0]][co1[1]] == null){
             System.out.println("Case vide");
             return false;
         }
 
-        if(!plateau.getPlateau()[co1tab[0]][co1tab[1]].getColor().equals(this.getCouleur())){
+        if(!plateau.getPlateau()[co1[0]][co1[1]].getColor().equals(this.getCouleur())){
             System.out.println("Mauvaise couleur");
             return false;
         }
 
-        System.out.println(this.pseudo + " où veux tu la bouger ?");
-        co2 = sc.nextLine();
-        co2tab = transformerCo(co2);
-        if(co2tab == null) return false;
+        co2 = choixDeplacement("Où voulez vous la bouger ? (ex: a2 ou 2a): ");
         
-        return plateau.getPlateau()[co1tab[0]][co1tab[1]].move(plateau,co1tab,co2tab);
+        return plateau.getPlateau()[co1[0]][co1[1]].move(plateau,co1,co2);
     }
 }
