@@ -69,25 +69,24 @@ public class Pion extends Piece {
     public boolean promotion(Plateau plateau, int[] position) {
         String co1 = "";
         Piece[][] plat = plateau.getPlateau();
-        Couleur couleur = plat[position[0]][position[1]].getColor();
         if(position[0] == 0 || position[0] == 7){
             System.out.println("Votre pion peut être promu :\n1. Reine\n2. Tour\n3. Fou\n4. Cavalier");
             Scanner sc = new Scanner(System.in); 
             co1 = sc.nextLine();
             if(co1.equals("1") || co1.equals("Reine") || co1.equals("Dame") || co1.equals("reine") || co1.equals("dame") || co1.equals("REINE") || co1.equals("DAME")){
-                plat[position[0]][position[1]] = new Dame(couleur);
+                plat[position[0]][position[1]] = new Dame(this.color);
             }
             else if(co1.equals("2") || co1.equals("Tour") || co1.equals("tour") || co1.equals("TOUR")){
-                plat[position[0]][position[1]] = new Tour(couleur);
+                plat[position[0]][position[1]] = new Tour(this.color);
             }
             else if(co1.equals("3") || co1.equals("Fou") || co1.equals("fou") || co1.equals("FOU")){
-                plat[position[0]][position[1]] = new Fou(couleur);
+                plat[position[0]][position[1]] = new Fou(this.color);
             }
             else if(co1.equals("4") || co1.equals("Cavalier") || co1.equals("cavalier") || co1.equals("CAVALIER")){
-                plat[position[0]][position[1]] = new Cavalier(couleur);
+                plat[position[0]][position[1]] = new Cavalier(this.color);
             }
             else{
-                plat[position[0]][position[1]] = new Dame(couleur);
+                plat[position[0]][position[1]] = new Dame(this.color);
             }
             plateau.setPlateau(plat);
             return true;
@@ -110,6 +109,8 @@ public class Pion extends Piece {
             plateau.getPlateau()[newPosition[0]][newPosition[1]] = this;
             if((plateau.getRoi(color).echec(plat, plateau.getPositionRoi(this.getColor())) == false) || plateau.getRoi(color).echecPos(plat, plateau.getPositionRoi(this.getColor())) == newPosition) {
                 plateau.getPlateau()[oldPosition[0]][oldPosition[1]] = null;
+                promotion(plateau, newPosition);
+                System.out.println("debug");
                 return true;
             }else {
                 plateau.getPlateau()[newPosition[0]][newPosition[1]] = null;
