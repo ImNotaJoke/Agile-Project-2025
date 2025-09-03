@@ -13,6 +13,9 @@ public class Fou extends Piece {
             if (Math.abs(oldPosition[0] - newPosition[0]) == Math.abs(oldPosition[1] - newPosition[1]) && super.maxDepl(plateau, oldPosition, newPosition)) {
                 return true;
             }
+            if (Math.abs(oldPosition[0] - newPosition[0]) == Math.abs(oldPosition[1] - newPosition[1]) && super.mange(plateau, oldPosition, newPosition)) {
+                return true;
+            }
         }
         return false;
     }

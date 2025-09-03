@@ -9,11 +9,18 @@ public class Dame extends Piece {
     }
     
     public boolean moveIsOk(Piece[][] plateau, int[] oldPosition, int[] newPosition) {
-        if((oldPosition[0] == newPosition[0] || oldPosition[1] == newPosition[1]) && super.maxDepl(plateau, oldPosition, newPosition)){
-            return true;
-        }else if(newPosition[0] < 7 && newPosition[0] >= 0 && newPosition[1] < 7 && newPosition[1] >= 0) {
-            if (Math.abs(oldPosition[0] - newPosition[0]) == Math.abs(oldPosition[1] - newPosition[1]) && super.maxDepl(plateau, oldPosition, newPosition)) {
+        if(oldPosition[0] < 8 && oldPosition[0] >= 0 && oldPosition[1] < 8 && oldPosition[1] >= 0) {
+            if((oldPosition[0] == newPosition[0] || oldPosition[1] == newPosition[1]) && super.maxDepl(plateau, oldPosition, newPosition)){
                 return true;
+            }else if(oldPosition[0] == newPosition[0] && oldPosition[1] == newPosition[1] && super.mange(plateau, oldPosition, newPosition)){
+                return true;
+            }else if(newPosition[0] < 7 && newPosition[0] >= 0 && newPosition[1] < 7 && newPosition[1] >= 0) {
+                if (Math.abs(oldPosition[0] - newPosition[0]) == Math.abs(oldPosition[1] - newPosition[1]) && super.maxDepl(plateau, oldPosition, newPosition)) {
+                    return true;
+                }
+                if (Math.abs(oldPosition[0] - newPosition[0]) == Math.abs(oldPosition[1] - newPosition[1]) && super.mange(plateau, oldPosition, newPosition)) {
+                    return true;
+                }
             }
         }
         return false;

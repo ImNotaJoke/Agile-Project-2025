@@ -1,5 +1,7 @@
 package main.piece;
 
+import java.util.Scanner;
+
 import main.Couleur;
 import main.Plateau;
 
@@ -26,14 +28,18 @@ public class Pion extends Piece {
         if (estBlanc) {
             if (newX == oldX - 1 && Math.abs(newY - oldY) == 1) {
                 Piece cible = plateau[newX][newY];
-                return (cible != null && cible.getColor() != Couleur.BLANC);
+                if(cible.getName() != PieceName.ROI){
+                    return (cible != null && cible.getColor() != Couleur.BLANC);
+                }
             }
         }
         // Mouvement du pion noir (avance vers le haut de la matrice)
         else {
             if (newX == oldX + 1 && Math.abs(newY - oldY) == 1) {
                 Piece cible = plateau[newX][newY];
-                return (cible != null && cible.getColor() != Couleur.NOIR);
+                if(cible.getName() != PieceName.ROI){
+                    return (cible != null && cible.getColor() != Couleur.NOIR);
+                }
             }
         }
         return false;
@@ -61,11 +67,28 @@ public class Pion extends Piece {
     }
 
     public boolean promotion(Plateau plateau, int[] position) {
+        String co1 = "";
         Piece[][] plat = plateau.getPlateau();
         Couleur couleur = plat[position[0]][position[1]].getColor();
         if(position[0] == 0 || position[0] == 7){
-            System.out.println("Promotion du pion en dame");
-            plat[position[0]][position[1]] = new Dame(couleur);
+            System.out.println("Votre pion peut être promu :\n1. Reine\n2. Tour\n3. Fou\n4. Cavalier");
+            Scanner sc = new Scanner(System.in); 
+            co1 = sc.nextLine();
+            if(co1.equals("1") || co1.equals("Reine") || co1.equals("Dame") || co1.equals("reine") || co1.equals("dame") || co1.equals("REINE") || co1.equals("DAME")){
+                plat[position[0]][position[1]] = new Dame(couleur);
+            }
+            else if(co1.equals("2") || co1.equals("Tour") || co1.equals("tour") || co1.equals("TOUR")){
+                plat[position[0]][position[1]] = new Tour(couleur);
+            }
+            else if(co1.equals("3") || co1.equals("Fou") || co1.equals("fou") || co1.equals("FOU")){
+                plat[position[0]][position[1]] = new Fou(couleur);
+            }
+            else if(co1.equals("4") || co1.equals("Cavalier") || co1.equals("cavalier") || co1.equals("CAVALIER")){
+                plat[position[0]][position[1]] = new Cavalier(couleur);
+            }
+            else{
+                plat[position[0]][position[1]] = new Dame(couleur);
+            }
             plateau.setPlateau(plat);
             return true;
         }

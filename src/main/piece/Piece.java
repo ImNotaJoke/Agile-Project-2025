@@ -12,6 +12,10 @@ public abstract class Piece {
         this.name = name;
     }
 
+    public PieceName getName() {
+        return this.name;
+    }
+    
     public Couleur getColor() {
         return this.color;
     }
@@ -33,6 +37,37 @@ public abstract class Piece {
             default:
                 return " ";
         }
+    }
+
+    public boolean mange(Piece[][] plateau, int[] oldPosition, int[] newPosition) {
+        int xOld = oldPosition[0];
+        int xPlus = xOld - newPosition[0];
+        int yOld = oldPosition[1];
+        int yPlus = yOld - newPosition[1];
+
+        while (xPlus != 0 || yPlus != 0) {
+            if (xPlus > 0) {
+                xOld -= 1;
+                xPlus -= 1;
+            } else if (xPlus < 0) {
+                xOld += 1;
+                xPlus += 1;
+            }
+            if (yPlus > 0) {
+                yOld -= 1;
+                yPlus -= 1;
+            } else if (yPlus < 0) {
+                yOld += 1;
+                yPlus += 1;
+            }
+            if (plateau[xOld][yOld] != null) {
+                if(xOld == newPosition[0] && yOld == newPosition[1]){
+                    return plateau[xOld][yOld].getColor() != this.color;
+                }
+                return false;
+            }
+        }
+        return true;
     }
 
     public boolean maxDepl(Piece[][] plateau, int[] oldPosition, int[] newPosition) {
