@@ -69,6 +69,41 @@ public class Plateau {
         }
     }
 
+    public void initPromotion(){
+        for (int i = 0; i < 8; i++) {
+            for (int k = 0; k < 8; k++) {
+                this.plateau[i][k] = null;
+            }
+        }
+        this.placerPiece(0, 0, new Tour(Couleur.BLANC));
+        this.placerPiece(6, 1, new Pion(Couleur.BLANC));
+        this.placerPiece(7, 7, new Roi(Couleur.NOIR));
+        this.placerPiece(0, 7, new Roi(Couleur.BLANC));
+    }
+
+    public void initEchec(){
+        for (int i = 0; i < 8; i++) {
+            for (int k = 0; k < 8; k++) {
+                this.plateau[i][k] = null;
+            }
+        }
+        this.placerPiece(0, 4, new Tour(Couleur.BLANC));
+        this.placerPiece(0, 3, new Tour(Couleur.BLANC));
+        this.placerPiece(4, 4, new Roi(Couleur.NOIR));
+    }
+
+    public void initEchecEtMat(){
+        for (int i = 0; i < 8; i++) {
+            for (int k = 0; k < 8; k++) {
+                this.plateau[i][k] = null;
+            }
+        }
+        this.placerPiece(0, 7, new Tour(Couleur.BLANC));
+        this.placerPiece(1, 6, new Tour(Couleur.BLANC));
+        this.placerPiece(3, 1, new Tour(Couleur.NOIR));
+        this.placerPiece(7, 7, new Roi(Couleur.NOIR));
+    }
+
     @Override
     public String toString() {
         String s = "  a b c d e f g h  ";

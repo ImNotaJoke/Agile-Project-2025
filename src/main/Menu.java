@@ -20,6 +20,10 @@ public class Menu {
                 menu.nextLine();
 
                 switch (choix) {
+                    case 0:
+                        fakeClear();
+                        afficherDemo(menu);
+                        break;
                     case 1:
                         fakeClear();
                         afficherJouer(menu); 
@@ -80,12 +84,54 @@ public class Menu {
                 switch (choix) {
                     case 1:
                         System.out.println("Démarrage de la partie contre un autre joueur...\n");
+                        ChessWithMe.start(Demo.GAME);
                         break;
                     case 2:
                         System.out.println("En cours de création...\n");
-                        // En attente...                        git pull --rebase
+                        // En attente...
                         break;
                     case 3:
+                        retour = true;
+                        break;
+                        // Retour au menu principal
+                    default:
+                        System.out.println("Choix invalide. Veuillez réessayer.\n");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Entrée invalide. Veuillez entrer un nombre.\n");
+                scanner.nextLine(); // vider l’entrée incorrecte
+            }
+        }
+    }
+
+    public static void afficherDemo(Scanner scanner) {
+        boolean retour = false;
+
+        while (!retour) {
+            System.out.println("\n\n                                 1. Promotion");
+            System.out.println("                                 2. Echec");
+            System.out.println("                                 3. Echec et Mat");
+            System.out.println("                                 4. Retour au menu principal\n");
+
+            try {
+                System.out.print("Votre choix : ");
+                int choix = scanner.nextInt();
+                scanner.nextLine(); // vider le buffer
+
+                switch (choix) {
+                    case 1:
+                        System.out.println("Démarrage de la démo de promotion...\n");
+                        ChessWithMe.start(Demo.PROMOTION);
+                        break;
+                    case 2:
+                        System.out.println("Démarrage de la démo d'échec...\n");
+                        ChessWithMe.start(Demo.ECHEC);
+                        break;
+                    case 3:
+                        System.out.println("Démarrage de la démo d'échec et mat...\n");
+                        ChessWithMe.start(Demo.ECHECETMAT);
+                        break;
+                    case 4:
                         retour = true;
                         break;
                         // Retour au menu principal
