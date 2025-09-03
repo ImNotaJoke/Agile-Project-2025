@@ -25,7 +25,8 @@ public class Dame extends Piece {
         
 
     public boolean move(Plateau plateau, int[] oldPosition, int[] newPosition) {
-        if (moveIsOk(plateau.getPlateau(), oldPosition, newPosition)) {
+        Piece[][] plat = plateau.getPlateau();
+        if (moveIsOk(plateau.getPlateau(), oldPosition, newPosition)  && (plateau.getRoi(color).echec(plat, plateau.getPositionRoi(this.getColor())) == false)) {
             plateau.getPlateau()[newPosition[0]][newPosition[1]] = this;
             plateau.getPlateau()[oldPosition[0]][oldPosition[1]] = null;
             return true;

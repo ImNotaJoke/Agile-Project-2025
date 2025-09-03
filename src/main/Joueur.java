@@ -130,7 +130,6 @@ public class Joueur {
             System.out.println("Echec !");
             if(plateau.getRoi(this.getCouleur()).echecEtMat(plateau.getPlateau(), plateau.getPositionRoi(this.getCouleur()))) {
                 System.out.println("Echec et mat ! " + this.getPseudo() + " a perdu.");
-                System.exit(0);
             }
         }
     }

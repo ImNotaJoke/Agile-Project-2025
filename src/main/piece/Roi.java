@@ -111,11 +111,12 @@ public class Roi extends Piece {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (moveIsOk(plateau, positionRoi, new int[] { i, j }) && !echec(plateau, new int[] { i, j }, false)) {
+                    plateau[positionRoi[0]][positionRoi[1]] = this;
                     return false; // Le roi peut s'échapper
                 }
             }
         }
-        plateau[positionRoi[0]][positionRoi[1]] = this; // Remet le roi à sa position actuelle
+        plateau[positionRoi[0]][positionRoi[1]] = this;// Remet le roi à sa position actuelle
         if(contreEchec(plateau, positionRoi, echecPos(plateau, positionRoi))){
             return false; // Une pièce alliée peut capturer la pièce qui met le roi en échec
         }
