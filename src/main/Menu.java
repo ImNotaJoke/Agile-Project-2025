@@ -11,7 +11,7 @@ public class Menu {
         boolean quitter = false;    
 
         while (!quitter) {
-            fakeClear();
+            ChessWithMe.clearConsole();
             afficherTitre();
             afficherMenu();
             try {
@@ -20,28 +20,28 @@ public class Menu {
                 menu.nextLine();
 
                 switch (choix) {
-                    case 0:
-                        fakeClear();
-                        afficherDemo(menu);
-                        break;
                     case 1:
-                        fakeClear();
+                        ChessWithMe.clearConsole();
                         afficherJouer(menu); 
                         break;
                     case 2:
-                        fakeClear();
-                        afficherHistorique(menu);
+                        ChessWithMe.clearConsole();
+                        afficherDemo(menu);
                         break;
                     case 3:
-                        fakeClear();
+                        ChessWithMe.clearConsole();
+                        afficherHistorique(menu);
+                        break;
+                    case 4:
+                        ChessWithMe.clearConsole();
                         afficherCredits(menu);
                         break; 
-                    case 4:
-                        fakeClear();
+                    case 5:
+                        ChessWithMe.clearConsole();
                         afficherRegles(menu);
                         break;
-                    case 5:
-                        fakeClear();
+                    case 6:
+                        ChessWithMe.clearConsole();
                         quitter = true;
                         afficherAuRevoirASCII();
                         break;
@@ -60,10 +60,11 @@ public class Menu {
     // Affiche les choix du menu principal
     public static void afficherMenu() {
         System.out.println("\n\n                       1. Jouer");
-        System.out.println("                       2. Historique");
-        System.out.println("                       3. Crédits");
-        System.out.println("                       4. Règles");
-        System.out.println("                       5. Quitter");
+        System.out.println("                       2. Demo");
+        System.out.println("                       3. Historique");
+        System.out.println("                       4. Crédits");
+        System.out.println("                       5. Règles");
+        System.out.println("                       6. Quitter");
         System.out.println();
     }
 
