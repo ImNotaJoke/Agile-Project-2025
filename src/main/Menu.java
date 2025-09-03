@@ -132,7 +132,7 @@ public class Menu {
 
     // Affiche les regles des jeux des echecs simplifié
     public static void afficherRegles(Scanner scanner) {
-        System.out.println("\n\n\n\n\n   Règles du jeu d'échecs simplifié :");
+        System.out.println("\n\n\n\n\n   Règles du jeu d'échecs simplifié :\n");
         System.out.println("   - Chaque joueur commence avec 8 pions, 2 tours, 2 cavaliers, 2 fous, 1 dame et 1 roi.");
         System.out.println("   - Les pions avancent d'une case, mais capturent en diagonale.");
         System.out.println("   - Les tours se déplacent en ligne droite horizontalement ou verticalement.");
@@ -142,7 +142,7 @@ public class Menu {
         System.out.println("   - Les rois se déplacent d'une case dans toutes les directions.");
         System.out.println("   - Attention seul le cavalier peut sauter au dessus des autres pièces.");
         System.out.println("   - Le but du jeu est de mettre le roi adverse en échec et mat.");
-        System.out.println("   Appuyez sur Entrée pour revenir au menu principal...");
+        System.out.println("\n   Appuyez sur Entrée pour revenir au menu principal...");
         scanner.nextLine();
     }
 
