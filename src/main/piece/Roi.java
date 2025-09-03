@@ -13,6 +13,9 @@ public class Roi extends Piece {
             if (Math.abs(oldPosition[0] - newPosition[0]) <= 1 && Math.abs(oldPosition[1] - newPosition[1]) <= 1 && plateau[newPosition[0]][newPosition[1]] == null) {
                 return true;
             }
+            if (Math.abs(oldPosition[0] - newPosition[0]) <= 1 && Math.abs(oldPosition[1] - newPosition[1]) <= 1 && super.mange(plateau, oldPosition, newPosition)) {
+                return true;
+            }
         }
         return false;
     }
