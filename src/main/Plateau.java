@@ -109,4 +109,15 @@ public class Plateau {
         this.plateauCouleur = plateauCouleur;
     }
 
+    public Roi getRoi(Couleur color) {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                Piece piece = plateau[i][j];
+                if (piece != null && piece.getName() == main.piece.PieceName.ROI && piece.getColor() == color) {
+                    return (Roi) piece;
+                }
+            }
+        }
+        return null; // Roi non trouvé
+    }
 }
