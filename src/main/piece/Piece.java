@@ -39,6 +39,8 @@ public abstract class Piece {
         }
     }
 
+    public abstract boolean moveIsOk(Piece[][] plateau, int[] oldPosition, int[] newPosition);
+
     public boolean mange(Piece[][] plateau, int[] oldPosition, int[] newPosition) {
         int xOld = oldPosition[0];
         int xPlus = xOld - newPosition[0];

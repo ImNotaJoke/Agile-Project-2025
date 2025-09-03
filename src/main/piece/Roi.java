@@ -20,6 +20,22 @@ public class Roi extends Piece {
         return false;
     }
 
+    public boolean echec(Piece[][] plateau, int[] positionRoi) {
+        // Vérifie si une pièce adverse peut capturer le roi à sa position actuelle
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                Piece piece = plateau[i][j];
+                if (piece != null && piece.getColor() != this.getColor()) {
+                    if (piece.moveIsOk(plateau, new int[] { i, j }, positionRoi)) {
+                        System.out.println("Le roi est en échec par " + piece.getName() + " en position (" + (i+1) + ", " + (j+1) + ")");
+                        return true; // Le roi est en échec
+                    }
+                }
+            }
+        }
+        return false; // Le roi n'est pas en échec
+    }
+
     public boolean move(Plateau plateau, int[] oldPosition, int[] newPosition) {
         if (moveIsOk(plateau.getPlateau(), oldPosition, newPosition)) {
             plateau.getPlateau()[newPosition[0]][newPosition[1]] = this;

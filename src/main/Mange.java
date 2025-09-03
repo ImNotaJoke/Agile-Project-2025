@@ -9,9 +9,8 @@ public class Mange {
         plateau.initPlateauVierge();
         plateau.placerPiece(0, 4, new Tour(Couleur.BLANC));
         System.out.println(plateau);
-        plateau.placerPiece(4, 4, new Fou(Couleur.NOIR));
+        plateau.placerPiece(4, 4, new Roi(Couleur.NOIR));
         System.out.println(plateau);
-        plateau.getPlateau()[0][4].move(plateau, new int[] { 0, 4 }, new int[] { 4, 4 });
-        System.out.println(plateau);
+        plateau.getRoi(Couleur.NOIR).echec(plateau.getPlateau(), plateau.getPositionRoi(Couleur.NOIR));
     }
 }
