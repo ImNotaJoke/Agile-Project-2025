@@ -50,14 +50,14 @@ public class ChessWithMe {
 
         do{
             do {
-                blanc.echecJoueur(plateau);
-                int [] co1 = blanc.choixDeplacement("Choisissez une pièce à déplacer (ex: a2 ou 2a): ");
+                j1.echecJoueur(plateau);
+                int [] co1 = j1.choixDeplacement(j1.getPseudo() + " choisie une pièce à déplacer (ex: a2 ou 2a): ");
                 if(co1[0] == -1 && co1[1] == -1){
                     start(type);
                     return;
                 }
-                int [] co2 = blanc.choixDeplacement("Où voulez vous la bouger ? (ex: a2 ou 2a): ");
-                readyj1 = !blanc.demanderDeplacement(plateau,co1,co2);
+                int [] co2 = j2.choixDeplacement(j1.getPseudo() + " où voux tu bouger la pièce ? (ex: a2 ou 2a): ");
+                readyj1 = !j1.demanderDeplacement(plateau,co1,co2);
                 clearConsole();
                 System.out.println(plateau);
             } while (readyj1);
@@ -65,14 +65,14 @@ public class ChessWithMe {
             wait(1000);
 
             do {
-                noir.echecJoueur(plateau);
-                int [] co3 = noir.choixDeplacement("Choisissez une pièce à déplacer (ex: a2 ou 2a): ");
+                j2.echecJoueur(plateau);
+                int [] co3 = j1.choixDeplacement(j2.getPseudo() + " choisie une pièce à déplacer (ex: a2 ou 2a): ");
                 if(co3[0] == -1 && co3[1] == -1){
                     start(type);
                     return;
                 }
-                int [] co4 = noir.choixDeplacement("Où voulez vous la bouger ? (ex: a2 ou 2a): ");
-                readyj2 = !noir.demanderDeplacement(plateau,co3,co4);
+                int [] co4 = j2.choixDeplacement(j2.getPseudo() + " où voux tu bouger la pièce ? (ex: a2 ou 2a): ");
+                readyj2 = !j2.demanderDeplacement(plateau,co3,co4);
                 clearConsole();
                 System.out.println(plateau);
             } while (readyj2);
