@@ -28,7 +28,9 @@ public class Pion extends Piece {
         if (estBlanc) {
             if (newX == oldX - 1 && Math.abs(newY - oldY) == 1) {
                 Piece cible = plateau[newX][newY];
-                return (cible != null && cible.getColor() != Couleur.BLANC);
+                if(cible.getName() != PieceName.ROI){
+                    return (cible != null && cible.getColor() != Couleur.BLANC);
+                }
             }
         }
         // Mouvement du pion noir (avance vers le haut de la matrice)
