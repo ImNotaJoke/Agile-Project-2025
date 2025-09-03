@@ -38,6 +38,16 @@ public class ChessWithMe {
         j1.echecJoueur(plateau);
         j2.echecJoueur(plateau);
 
+        Joueur blanc;
+        Joueur noir;
+        if ( j1.getCouleur() == Couleur.BLANC){
+            blanc = j1;
+            noir = j2;
+        }else{
+            blanc = j2;
+            noir = j1;
+        }
+
         do{
             do {
                 j1.echecJoueur(plateau);
@@ -51,7 +61,9 @@ public class ChessWithMe {
                 clearConsole();
                 System.out.println(plateau);
             } while (readyj1);
+
             wait(1000);
+
             do {
                 j2.echecJoueur(plateau);
                 int [] co3 = j1.choixDeplacement(j2.getPseudo() + " choisie une pièce à déplacer (ex: a2 ou 2a): ");
@@ -64,6 +76,7 @@ public class ChessWithMe {
                 clearConsole();
                 System.out.println(plateau);
             } while (readyj2);
+            
             readyj1 = false;
             readyj2 = false;
         }while(true);
