@@ -114,11 +114,13 @@ public class Joueur {
 
 
         if(plateau.getPlateau()[co1[0]][co1[1]] == null){
+            ChessWithMe.clearConsole();
             System.out.println("Case vide");
             return false;
         }
 
         if(!plateau.getPlateau()[co1[0]][co1[1]].getColor().equals(this.getCouleur())){
+            ChessWithMe.clearConsole();
             System.out.println("Mauvaise couleur");
             return false;
         }
