@@ -73,6 +73,7 @@ public class Menu {
         boolean retour = false;
 
         while (!retour) {
+            afficherTitre();
             System.out.println("\n\n                                 1. vs Adversaire");
             System.out.println("                                 2. vs Ordinateur");
             System.out.println("                                 3. Retour au menu principal\n");
@@ -109,6 +110,7 @@ public class Menu {
         boolean retour = false;
 
         while (!retour) {
+            afficherDemoAscii();
             System.out.println("\n\n                                 1. Promotion");
             System.out.println("                                 2. Echec");
             System.out.println("                                 3. Echec et Mat");
@@ -188,7 +190,8 @@ public class Menu {
 
     // Affiche les regles des jeux des echecs simplifié
     public static void afficherRegles(Scanner scanner) {
-        System.out.println("\n\n\n\n\n   Règles du jeu d'échecs simplifié :\n");
+        afficherReglesAscii();
+        System.out.println("\n\n   Règles du jeu d'échecs simplifié :\n");
         System.out.println("   - Chaque joueur commence avec 8 pions, 2 tours, 2 cavaliers, 2 fous, 1 dame et 1 roi.");
         System.out.println("   - Les pions avancent d'une case, mais capturent en diagonale.");
         System.out.println("   - Les tours se déplacent en ligne droite horizontalement ou verticalement.");
@@ -222,6 +225,15 @@ public class Menu {
         System.out.println("                                   ");
     }
 
+    public static void afficherDemoAscii(){
+        System.out.println("  _____                       ");
+        System.out.println(" |  __ \\                      ");
+        System.out.println(" | |  | | ___ _ __ ___   ___  ");
+        System.out.println(" | |  | |/ _ \\ '_ ` _ \\ / _ \\ ");
+        System.out.println(" | |__| |  __/ | | | | | (_) |");
+        System.out.println(" |_____/ \\___|_| |_| |_|\\___/ ");
+    }
+
     // Affiche "Historique" en ASCII
     public static void afficherHistoriqueAscii() {
         System.out.println("  _   _ _     _                           ");
@@ -231,6 +243,18 @@ public class Menu {
         System.out.println(" |_| |_|_|___/\\__\\___/|_|  |_|\\__, |\\__,_|\\___|");
         System.out.println("                                |_|       ");
     }
+
+    public static void afficherReglesAscii(){
+        System.out.println("  _____  __        _           ");
+        System.out.println(" |  __ \\ \\_\\      | |          ");
+        System.out.println(" | |__) |___  __ _| | ___  ___ ");
+        System.out.println(" |  _  // _ \\/ _` | |/ _ \\/ __|");
+        System.out.println(" | | \\ \\  __/ (_| | |  __/\\__ \\");
+        System.out.println(" |_|  \\_\\___|\\__, |_|\\___||___/");
+        System.out.println("             __/ |             ");
+        System.out.println("             |___/             ");
+    }
+
 
     // Affiche "Au revoir" en ASCII
     public static void afficherAuRevoirASCII() {

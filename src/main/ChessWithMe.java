@@ -15,11 +15,13 @@ public class ChessWithMe {
         //Choix Nom et couleur
         Scanner sc = new Scanner(System.in); 
         System.out.println("Joueur 1 : entrez votre pseudo : ");
-        String nom = sc.nextLine(); 
+        String nom = sc.nextLine();
+        clearConsole();
         Couleur couleur = Couleur.demandeCouleur();
         j1 = new Joueur(nom,couleur); //crée un joueur 1 avec couleur et pseudo
         clearConsole();
         Scanner sc2 = new Scanner(System.in); 
+        clearConsole();
         System.out.println("Joueur 2 : entrez votre pseudo : ");
         String nom2 = sc2.nextLine(); 
         j2 = new Joueur(nom2); // crée le joueur 2 seulement avec le pseudo 
@@ -28,12 +30,11 @@ public class ChessWithMe {
         }else{
             j2.setCouleur(Couleur.BLANC); 
         }
-        clearConsole();
-        System.out.println("Joueur 1 : " + j1.getPseudo() + " (" + j1.getCouleur() + ")");
-        System.out.println("Joueur 2 : " + j2.getPseudo() + " (" + j2.getCouleur() + ")");
 
         Plateau plateau = new Plateau(type);
         
+        clearConsole();
+        Menu.afficherTitre();
         System.out.println(plateau);
         j1.echecJoueur(plateau);
         j2.echecJoueur(plateau);
@@ -52,14 +53,17 @@ public class ChessWithMe {
         do{
             do {
                 blanc.echecJoueur(plateau);
-                int [] co1 = blanc.choixDeplacement(blanc.getPseudo() + " choisie une pièce à déplacer (ex: a2 ou 2a): ");
+                int [] co1 = blanc.choixDeplacement(blanc.getPseudo() + " choisie une pièce à déplacer (ex: a2 ou 2a) (Joueur " + j1.getCouleur() + "):");
                 if(co1[0] == -1 && co1[1] == -1){
                     start(type);
                     return;
                 }
+                clearConsole();
+                Menu.afficherTitre();
+                System.out.println(plateau);
                 int [] co2 = blanc.choixDeplacement(blanc.getPseudo() + " où voux tu bouger la pièce ? (ex: a2 ou 2a): ");
                 readyj1 = !blanc.demanderDeplacement(plateau,co1,co2);
-                clearConsole();
+                Menu.afficherTitre();
                 System.out.println(plateau);
             } while (readyj1);
 
@@ -67,14 +71,17 @@ public class ChessWithMe {
 
             do {
                 noir.echecJoueur(plateau);
-                int [] co3 = noir.choixDeplacement(noir.getPseudo() + " choisie une pièce à déplacer (ex: a2 ou 2a): ");
+                int [] co3 = noir.choixDeplacement(noir.getPseudo() + " choisie une pièce à déplacer (ex: a2 ou 2a) (Joueur " + j2.getCouleur() + "):");
                 if(co3[0] == -1 && co3[1] == -1){
                     start(type);
                     return;
                 }
+                clearConsole();
+                Menu.afficherTitre();
+                System.out.println(plateau);
                 int [] co4 = noir.choixDeplacement(noir.getPseudo() + " où voux tu bouger la pièce ? (ex: a2 ou 2a): ");
                 readyj2 = !noir.demanderDeplacement(plateau,co3,co4);
-                clearConsole();
+                Menu.afficherTitre();
                 System.out.println(plateau);
             } while (readyj2);
             
