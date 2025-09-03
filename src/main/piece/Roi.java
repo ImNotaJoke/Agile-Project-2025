@@ -117,7 +117,8 @@ public class Roi extends Piece {
             }
         }
         plateau[positionRoi[0]][positionRoi[1]] = this;// Remet le roi à sa position actuelle
-        if(contreEchec(plateau, positionRoi, echecPos(plateau, positionRoi))){
+        int[] positionEchec = echecPos(plateau, positionRoi);
+        if (positionEchec[0] != -1 && positionEchec[1] != -1 && contreEchec(plateau, positionRoi, positionEchec)) {
             return false; // Une pièce alliée peut capturer la pièce qui met le roi en échec
         }
         System.out.println("Le roi est en échec et mat");

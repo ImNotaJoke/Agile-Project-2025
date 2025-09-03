@@ -44,22 +44,25 @@ public class Pion extends Piece {
     public boolean moveIsOk(Piece[][] plateau, int[] oldPosition, int[] newPosition) {
         boolean estBlanc = super.getColor() == Couleur.BLANC;
         int maxCase = premierCoup ? 2 : 1;
-        if (estBlanc) {
-            if (plateau[oldPosition[0] - maxCase][oldPosition[1]] == null) {
-                if (newPosition[0] >= 0 && newPosition[0] <= 7 && (newPosition[0] == oldPosition[0] - 1 || newPosition[0] == oldPosition[0] - maxCase)
-                        && newPosition[1] == oldPosition[1]) {
-                    return true;
+        if (oldPosition[0] >= 0 && oldPosition[0] < 8 && oldPosition[1] >= 0 && oldPosition[1] < 8) {
+            if (estBlanc) {
+                if (oldPosition[0] - maxCase >= 0 && plateau[oldPosition[0] - maxCase][oldPosition[1]] == null) {
+                    if (newPosition[0] >= 0 && newPosition[0] <= 7 && (newPosition[0] == oldPosition[0] - 1 || newPosition[0] == oldPosition[0] - maxCase)
+                            && newPosition[1] == oldPosition[1]) {
+                        return true;
                 }
             }
-        } else {
-            if (plateau[oldPosition[0] + 1][oldPosition[1]] == null) {
-                if (newPosition[0] >= 0 && newPosition[0] <= 7 && (newPosition[0] == oldPosition[0] + 1 || newPosition[0] == oldPosition[0] + maxCase)
-                        && newPosition[1] == oldPosition[1]) {
-                    return true;
+            } else {
+                if (oldPosition[0] + 1 < 8 && plateau[oldPosition[0] + 1][oldPosition[1]] == null) {
+                    if (newPosition[0] >= 0 && newPosition[0] <= 7 && (newPosition[0] == oldPosition[0] + 1 || newPosition[0] == oldPosition[0] + maxCase)
+                            && newPosition[1] == oldPosition[1]) {
+                        return true;
+                    }
                 }
             }
+            return pionMange(estBlanc, plateau, oldPosition, newPosition);
         }
-        return pionMange(estBlanc, plateau, oldPosition, newPosition);
+        return false;
     }
 
     public boolean promotion(Plateau plateau, int[] position) {
@@ -92,6 +95,15 @@ public class Pion extends Piece {
     }
 
     public boolean move(Plateau plateau, int[] oldPosition, int[] newPosition) {
+        if(this.color == Couleur.BLANC) {
+            if(oldPosition[0] != 6) {
+                this.premierCoup = false;
+            }
+        } else {
+            if(oldPosition[0] != 1) {
+                this.premierCoup = false;
+            }
+        }
         Piece[][] plat = plateau.getPlateau();
         if (this.moveIsOk(plat, oldPosition, newPosition)  && (plateau.getRoi(color).echec(plat, plateau.getPositionRoi(this.getColor())) == false)) {
             plat[newPosition[0]][newPosition[1]] = this;
@@ -104,5 +116,9 @@ public class Pion extends Piece {
             System.out.println("Mouvement impossible pour le pion");
             return false;
         }
+    }
+
+    public void setPremierCoup(boolean premierCoup) {
+        this.premierCoup = premierCoup;
     }
 }
