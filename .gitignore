@@ -1,4 +1,10 @@
-lib/
+// ...existing code...
+Piece cible = plateau[newX][newY];
+if (cible != null && cible.getColor() == this.getColor()) {
+    // Impossible de manger une pièce de sa propre couleur
+    return false;
+}
+// ...suite du code de capture...lib/
 *.Class
 .vscode/
 bin
