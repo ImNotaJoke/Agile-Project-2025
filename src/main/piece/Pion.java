@@ -35,7 +35,9 @@ public class Pion extends Piece {
         else {
             if (newX == oldX + 1 && Math.abs(newY - oldY) == 1) {
                 Piece cible = plateau[newX][newY];
-                return (cible != null && cible.getColor() != Couleur.NOIR);
+                if(cible.getName() != PieceName.ROI){
+                    return (cible != null && cible.getColor() != Couleur.NOIR);
+                }
             }
         }
         return false;
