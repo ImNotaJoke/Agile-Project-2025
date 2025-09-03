@@ -1,104 +1,75 @@
 package main;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.Buffer;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import main.Joueur;
 
 /* Classe qui va permettre l'importation des données basées sur les formulaires des élèves */
-public class Gestion {
-    private static final String PATH = System.getProperty("user.dir")+File.separator+"groupe-15"+File.separator+"res"+File.separator; 
-    private static final String SOURCE = "import.csv";
-    // private static final String EXPORT = "export.csv";
-    private static final String SERIAL_PATH = "historique.json"; 
+public class Gestion{
+    private static final String CHEMIN_DOSSIER = "./res";
+    private static final String CHEMIN_FICHIER = CHEMIN_DOSSIER + "/PlayerHistoricGames.txt";
 
-    /* Méthode static permettant l'importation des données des joueurs*/
-    public static ArrayList<String> importData(){
-        ArrayList<String> tableImport = new ArrayList<String>();
-        try(Scanner scan = new Scanner(new File(PATH+SOURCE))){
-            while(scan.hasNextLine()){
-                String line = scan.nextLine();
-                tableImport.add(line);
+    // Sauvegarde une partie dans le fichier
+    public static void sauvegarderPartie(Joueur j1, Joueur j2) {
+        try {
+            // Crée le dossier s'il n'existe pas
+            File dossier = new File(CHEMIN_DOSSIER);
+            if (!dossier.exists()) {
+                dossier.mkdirs();
             }
-        }catch(FileNotFoundException fnfe){
-            System.err.println("Fichier introuvable : "+fnfe);
-        }catch(Exception e){
-            System.err.println("Une produite s'est produite : "+e);
-        }
-        return tableImport; 
-    }
 
-    /* Affichage d'une ArrayList */
-    public static <T> void displayArrayList(ArrayList<T> liste){
-            for(T t : liste){
-                System.out.println(t);
+            // Écriture dans le fichier (ajout à la fin)
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(CHEMIN_FICHIER, true))) {
+                writer.write(j1.getPseudo() + " vs " + j2.getPseudo());
+                writer.newLine();
             }
-    }
-    
 
-    public static void exportHistorique(HistoriqueJ h){
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(PATH+SERIAL_PATH))) {
-            oos.writeObject(h);
-        }catch (IOException ioe){
-            System.err.println("Erreur pendant la sauvegarde : "+ioe);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    public static HistoriqueJ importHistorique(){
-        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(PATH+SERIAL_PATH))){
-            return (HistoriqueJ) ois.readObject(); 
-        } catch(IOException ioe){
-            System.err.println("Erreur pendant l'importation des données : "+ioe);
-        }catch(ClassNotFoundException ce){
-            System.err.println("Aucune correspondance trouvé : "+ce);
+    // Lit toutes les parties sauvegardées
+    public static List<String> lireParties() {
+        List<String> parties = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(CHEMIN_FICHIER))) {
+            String ligne;
+            while ((ligne = reader.readLine()) != null) {
+                parties.add(ligne);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Aucune partie sauvegardée pour le moment.");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return null; 
+        return parties;
     }
 
-    // public static void main(String[] args) {
-    //     ArrayList<String> tableImport = Gestion.importData(); 
-    //     // Gestion.displayArrayList(tableImport);
-    //     ArrayList<Student> studentsList= Gestion.createStudents(tableImport); 
-    //     // Gestion.displayArrayList(studentsList);
-    //     Groupe france = Gestion.createGroup(studentsList, Country.FRA); 
-    //     Groupe italie = Gestion.createGroup(studentsList, Country.ITA);
+    // Exemple d'utilisation
+    public static void main(String[] args) {
+        System.out.println("Gestion des parties");
+        Joueur j1 = new Joueur("Alice",Couleur.BLANC);
+        System.out.println("non non " + j1);
+        Joueur j2 = new Joueur("Bob",Couleur.NOIR);
 
-    //     Groupe allemagne = Gestion.createGroup(studentsList, Country.ALL);
-    //     Gestion.displayArrayList(allemagne.getStudentsList());
-        
-    //     Groupe espagne = Gestion.createGroup(studentsList, Country.ESP);
-    //     Gestion.displayArrayList(espagne.getStudentsList());
+        Gestion.sauvegarderPartie(j1, j2);
 
-    //     // System.out.println("-------------");
-    //     // System.out.println(france.toStringAll());
-    //     // System.out.println("====");
-    //     // System.out.println(italie.toStringAll());
-        
-    //     Voyage voyage= new Voyage(LocalDate.now(), allemagne, espagne);
-    //     voyage.affectationCalcul();
-        
-    //     System.out.println("---------------");
-    //     System.out.println(voyage.getAffectations().toString());
-    //     Gestion.exportData(voyage.getAffectations());
-
-        
-    //     Voyage voyage2 = new Voyage(LocalDate.now(), italie, italie);
-
-    //     ArrayList<Voyage> listeVoyages = new ArrayList<>(); 
-    //     listeVoyages.add(voyage);
-    //     listeVoyages.add(voyage2); 
-
-    //     Historique h = new Historique(listeVoyages); 
-    //     System.out.println(h.toString());
-    //     Gestion.exportHistorique(h); 
-    //     System.out.println("====");
-    //     Historique h2 = Gestion.importHistorique();
-    //     System.out.println(h2.toString());
-    // }
-
+        List<String> parties = Gestion.lireParties();
+        for (String partie : parties) {
+            System.out.println(partie);
+        }
+    }
 }
