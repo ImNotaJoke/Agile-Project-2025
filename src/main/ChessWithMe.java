@@ -59,7 +59,6 @@ public class ChessWithMe {
                 }
                 int [] co2 = blanc.choixDeplacement(blanc.getPseudo() + " où voux tu bouger la pièce ? (ex: a2 ou 2a): ");
                 readyj1 = !blanc.demanderDeplacement(plateau,co1,co2);
-                clearConsole();
                 System.out.println(plateau);
             } while (readyj1);
 
@@ -74,7 +73,6 @@ public class ChessWithMe {
                 }
                 int [] co4 = noir.choixDeplacement(noir.getPseudo() + " où voux tu bouger la pièce ? (ex: a2 ou 2a): ");
                 readyj2 = !noir.demanderDeplacement(plateau,co3,co4);
-                clearConsole();
                 System.out.println(plateau);
             } while (readyj2);
             
