@@ -27,7 +27,7 @@ public class Roi extends Piece {
                 Piece piece = plateau[i][j];
                 if (piece != null && piece.getColor() != this.getColor()) {
                     if (piece.moveIsOk(plateau, new int[] { i, j }, positionRoi)) {
-                        System.out.println("Le roi est en échec par la pièce ");
+                        System.out.println("Le roi est en échec");
                         return true; // Le roi est en échec
                     }
                 }
