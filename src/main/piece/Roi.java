@@ -36,7 +36,7 @@ public class Roi extends Piece {
         return false; // Le roi n'est pas en échec
     }
 
-    private boolean echec(Piece[][] plateau, int[] positionRoi, boolean entré) {
+    private boolean echec(Piece[][] plateau, int[] positionRoi, boolean entry) {
         // Vérifie si une pièce adverse peut capturer le roi à sa position actuelle
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
