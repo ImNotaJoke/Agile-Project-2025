@@ -130,6 +130,6 @@ public class Plateau {
                 }
             }
         }
-        return null; // Roi non trouvé
+        return new int[] {-1, -1}; // Roi non trouvé
     }
 }
