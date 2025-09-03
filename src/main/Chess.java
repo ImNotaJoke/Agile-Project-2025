@@ -8,7 +8,7 @@ public class Chess{
         System.out.println(plateau);
         while(true){
             Joueur j1 = new Joueur("a",Couleur.BLANC);
-            j1.demanderDeplacement(plateau);
+            j1.demanderDeplacement(plateau, null, null);
             System.out.println(plateau);
         }
         

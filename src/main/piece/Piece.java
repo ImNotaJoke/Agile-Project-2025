@@ -46,6 +46,9 @@ public abstract class Piece {
         int xPlus = xOld - newPosition[0];
         int yOld = oldPosition[1];
         int yPlus = yOld - newPosition[1];
+        if(oldPosition == newPosition) {
+            return false;
+        }
 
         while (xPlus != 0 || yPlus != 0) {
             if (xPlus > 0) {

@@ -246,7 +246,7 @@ public class Menu {
         System.out.println("\n".repeat(50));
     }
     public static void main(String[] args) {
-        Menu.start();
+        start();
     }
 
 }

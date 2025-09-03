@@ -32,8 +32,8 @@ public class Dame extends Piece {
                 plateau.getPlateau()[oldPosition[0]][oldPosition[1]] = null;
                 return true;
             }else {
-                plateau.getPlateau()[oldPosition[0]][oldPosition[1]] = this;
                 plateau.getPlateau()[newPosition[0]][newPosition[1]] = null;
+                plateau.getPlateau()[oldPosition[0]][oldPosition[1]] = this;
             }
         }
         System.out.println("Mouvement impossible pour la dame");

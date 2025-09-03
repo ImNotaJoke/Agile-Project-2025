@@ -42,6 +42,7 @@ public class Pion extends Piece {
     }
 
     public boolean moveIsOk(Piece[][] plateau, int[] oldPosition, int[] newPosition) {
+        if(newPosition[0] == oldPosition[0] && newPosition[1] == oldPosition[1]) return false;
         boolean estBlanc = super.getColor() == Couleur.BLANC;
         int maxCase = premierCoup ? 2 : 1;
         if (oldPosition[0] >= 0 && oldPosition[0] < 8 && oldPosition[1] >= 0 && oldPosition[1] < 8) {
@@ -105,14 +106,14 @@ public class Pion extends Piece {
             }
         }
         Piece[][] plat = plateau.getPlateau();
-        if (moveIsOk(plateau.getPlateau(), oldPosition, newPosition) && newPosition != oldPosition) {
+        if (moveIsOk(plateau.getPlateau(), oldPosition, newPosition)) {
             plateau.getPlateau()[newPosition[0]][newPosition[1]] = this;
             if((plateau.getRoi(color).echec(plat, plateau.getPositionRoi(this.getColor())) == false) || plateau.getRoi(color).echecPos(plat, plateau.getPositionRoi(this.getColor())) == newPosition) {
                 plateau.getPlateau()[oldPosition[0]][oldPosition[1]] = null;
                 return true;
             }else {
-                plateau.getPlateau()[oldPosition[0]][oldPosition[1]] = this;
                 plateau.getPlateau()[newPosition[0]][newPosition[1]] = null;
+                plateau.getPlateau()[oldPosition[0]][oldPosition[1]] = this;
             }
         }
         System.out.println("Mouvement impossible pour le pion");
