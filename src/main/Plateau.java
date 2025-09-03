@@ -132,4 +132,48 @@ public class Plateau {
         }
         return new int[] {-1, -1}; // Roi non trouvé
     }
+
+    // POUR LE BOT 
+    public String toFEN() {
+        StringBuilder fen = new StringBuilder();
+        for (int i = 0; i < 8; i++) {
+            int empty = 0;
+            for (int j = 0; j < 8; j++) {
+                Piece piece = plateau[i][j];
+                if (piece == null) {
+                    empty++;
+                } else {
+                    if (empty > 0) {
+                        fen.append(empty);
+                        empty = 0;
+                    }
+                    String symbol = switch(piece.getName()) {
+                        case PION -> piece.getColor() == Couleur.BLANC ? "P" : "p";
+                        case TOUR -> piece.getColor() == Couleur.BLANC ? "R" : "r";
+                        case CAVALIER -> piece.getColor() == Couleur.BLANC ? "N" : "n";
+                        case FOU -> piece.getColor() == Couleur.BLANC ? "B" : "b";
+                        case DAME -> piece.getColor() == Couleur.BLANC ? "Q" : "q";
+                        case ROI -> piece.getColor() == Couleur.BLANC ? "K" : "k";
+                    };
+                    fen.append(symbol);
+                }
+            }
+            if (empty > 0) fen.append(empty);
+            if (i < 7) fen.append('/');
+        }
+        // Pour l'instant, on met "w" pour le joueur blanc à jouer, sans infos de roque ou en passant
+        fen.append(" w KQkq - 0 1");
+        return fen.toString();
+    }
+
+    public void appliquerCoupUCI(String move) {
+        int fromRow = 8 - Character.getNumericValue(move.charAt(1));
+        int fromCol = move.charAt(0) - 'a';
+        int toRow = 8 - Character.getNumericValue(move.charAt(3));
+        int toCol = move.charAt(2) - 'a';
+
+        plateau[toRow][toCol] = plateau[fromRow][fromCol];
+        plateau[fromRow][fromCol] = null;
+    }
+
 }
