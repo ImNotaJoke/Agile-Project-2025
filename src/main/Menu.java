@@ -226,12 +226,12 @@ public class Menu {
     }
 
     public static void afficherDemoAscii(){
-        System.out.println(" _____                       ");
-        System.out.println("|  __ \\                      ");
-        System.out.println("| |  | | ___ _ __ ___   ___  ");
-        System.out.println("| |  | |/ _ \\ '_ ` _ \\ / _ \\ ");
-        System.out.println("| |__| |  __/ | | | | | (_) |");
-        System.out.println("|_____/ \\___|_| |_| |_|\\___/ ");
+        System.out.println("  _____                       ");
+        System.out.println(" |  __ \\                      ");
+        System.out.println(" | |  | | ___ _ __ ___   ___  ");
+        System.out.println(" | |  | |/ _ \\ '_ ` _ \\ / _ \\ ");
+        System.out.println(" | |__| |  __/ | | | | | (_) |");
+        System.out.println(" |_____/ \\___|_| |_| |_|\\___/ ");
     }
 
     // Affiche "Historique" en ASCII
@@ -245,14 +245,14 @@ public class Menu {
     }
 
     public static void afficherReglesAscii(){
-        System.out.println(" _____  __        _           ");
-        System.out.println("|  __ \\ \\_\\      | |          ");
-        System.out.println("| |__) |___  __ _| | ___  ___ ");
-        System.out.println("|  _  // _ \\/ _` | |/ _ \\/ __|");
-        System.out.println("| | \\ \\  __/ (_| | |  __/\\__ \\");
-        System.out.println("|_|  \\_\\___|\\__, |_|\\___||___/");
-        System.out.println("            __/ |             ");
-        System.out.println("            |___/             ");
+        System.out.println("  _____  __        _           ");
+        System.out.println(" |  __ \\ \\_\\      | |          ");
+        System.out.println(" | |__) |___  __ _| | ___  ___ ");
+        System.out.println(" |  _  // _ \\/ _` | |/ _ \\/ __|");
+        System.out.println(" | | \\ \\  __/ (_| | |  __/\\__ \\");
+        System.out.println(" |_|  \\_\\___|\\__, |_|\\___||___/");
+        System.out.println("             __/ |             ");
+        System.out.println("             |___/             ");
     }
 
 

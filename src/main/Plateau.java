@@ -151,10 +151,11 @@ public class Plateau {
 
     @Override
     public String toString() {
-        String s = "  a b c d e f g h  ";
+        int lenght = 20;
+        String s = bigEspace(lenght) + "  a b c d e f g h  ";
         s += "\n";
         for (int i = 0; i < 8; i++) {
-            s += i+1 + " ";
+            s += bigEspace(lenght) + (i+1) + " ";
             for (int k = 0; k < 8; k++) {
                 if (plateau[i][k] == null) {
                     s += plateauCouleur[i][k];
@@ -162,11 +163,14 @@ public class Plateau {
                     s += plateau[i][k].getPiece() + " ";
                 }
             }
-            s += " " + (i+1);
-            s += "\n";
+            s += " " + (i+1) + "\n";
         }
-        s += "  a b c d e f g h  ";
+        s += bigEspace(lenght) + "  a b c d e f g h  ";
         return s;
+    }
+
+    public static String bigEspace(int n){
+        return " ".repeat(n);
     }
 
     public void placerPiece(int i, int k, Piece piece) {
