@@ -1,6 +1,7 @@
 package main;
 
 import java.util.Scanner;
+import main.piece.*;
 public class Joueur {
     /* Attributs */
     private String pseudo;
@@ -126,9 +127,14 @@ public class Joueur {
     }
 
     public void echecJoueur(Plateau plateau){
-        if(plateau.getRoi(this.getCouleur()).echec(plateau.getPlateau(), plateau.getPositionRoi(this.getCouleur()))) {
+        Roi roi = plateau.getRoi(this.getCouleur());
+        if (roi == null) {
+            System.out.println("Erreur : Le roi de la couleur " + this.getCouleur() + " est introuvable.");
+            return;
+        }
+        if (roi.echec(plateau.getPlateau(), plateau.getPositionRoi(this.getCouleur()))) {
             System.out.println("Echec !");
-            if(plateau.getRoi(this.getCouleur()).echecEtMat(plateau.getPlateau(), plateau.getPositionRoi(this.getCouleur()))) {
+            if (roi.echecEtMat(plateau.getPlateau(), plateau.getPositionRoi(this.getCouleur()))) {
                 System.out.println("Echec et mat ! " + this.getPseudo() + " a perdu.");
             }
         }

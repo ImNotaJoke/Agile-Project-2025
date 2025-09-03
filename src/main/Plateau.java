@@ -32,6 +32,10 @@ public class Plateau {
             this.initEchecEtMat();
         }else if(type == Demo.GAME){
             this.initPlateau();
+        }else if(type == Demo.PION){
+            this.initPion();
+        }else if(type == Demo.TUTO){
+            this.initTuto();
         }
     }
 
@@ -90,10 +94,10 @@ public class Plateau {
                 this.plateau[i][k] = null;
             }
         }
-        this.placerPiece(0, 0, new Tour(Couleur.BLANC));
-        this.placerPiece(6, 1, new Pion(Couleur.BLANC));
-        this.placerPiece(7, 7, new Roi(Couleur.NOIR));
-        this.placerPiece(0, 7, new Roi(Couleur.BLANC));
+        this.placerPiece(0, 0, new Tour(Couleur.NOIR));
+        this.placerPiece(6, 1, new Pion(Couleur.NOIR));
+        this.placerPiece(7, 7, new Roi(Couleur.BLANC));
+        this.placerPiece(0, 7, new Roi(Couleur.NOIR));
     }
 
     public void initEchec(){
@@ -102,9 +106,10 @@ public class Plateau {
                 this.plateau[i][k] = null;
             }
         }
-        this.placerPiece(0, 4, new Tour(Couleur.BLANC));
-        this.placerPiece(0, 3, new Tour(Couleur.BLANC));
-        this.placerPiece(4, 4, new Roi(Couleur.NOIR));
+        this.placerPiece(0, 4, new Tour(Couleur.NOIR));
+        this.placerPiece(0, 3, new Tour(Couleur.NOIR));
+        this.placerPiece(0, 5, new Roi(Couleur.NOIR));
+        this.placerPiece(4, 4, new Roi(Couleur.BLANC));
     }
 
     public void initEchecEtMat(){
@@ -113,10 +118,36 @@ public class Plateau {
                 this.plateau[i][k] = null;
             }
         }
-        this.placerPiece(0, 7, new Tour(Couleur.BLANC));
-        this.placerPiece(1, 6, new Tour(Couleur.BLANC));
-        this.placerPiece(3, 1, new Tour(Couleur.NOIR));
-        this.placerPiece(7, 7, new Roi(Couleur.NOIR));
+        this.placerPiece(0, 7, new Tour(Couleur.NOIR));
+        this.placerPiece(1, 6, new Tour(Couleur.NOIR));
+        this.placerPiece(0, 0, new Roi(Couleur.NOIR));
+        this.placerPiece(3, 1, new Tour(Couleur.BLANC));
+        this.placerPiece(7, 7, new Roi(Couleur.BLANC));
+    }
+
+    public void initPion(){
+        for (int i = 0; i < 8; i++) {
+            for (int k = 0; k < 8; k++) {
+                this.plateau[i][k] = null;
+            }
+        }
+        this.placerPiece(1, 5, new Pion(Couleur.NOIR));
+        this.placerPiece(6, 5, new Pion(Couleur.BLANC));
+        this.placerPiece(7, 5, new Roi(Couleur.BLANC));
+        this.placerPiece(0, 5, new Roi(Couleur.NOIR));
+    }
+
+    public void initTuto(){
+        for (int i = 0; i < 8; i++) {
+            for (int k = 0; k < 8; k++) {
+                this.plateau[i][k] = null;
+            }
+        }
+        this.placerPiece(1, 4, new Pion(Couleur.NOIR));
+        this.placerPiece(6, 4, new Pion(Couleur.BLANC));
+        this.placerPiece(7, 3, new Dame(Couleur.BLANC));
+        this.placerPiece(7, 4, new Roi(Couleur.BLANC));
+        this.placerPiece(0, 4, new Roi(Couleur.NOIR));
     }
 
     @Override

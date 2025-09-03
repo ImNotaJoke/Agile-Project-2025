@@ -32,22 +32,12 @@ public class ChessWithMe {
         System.out.println("Joueur 1 : " + j1.getPseudo() + " (" + j1.getCouleur() + ")");
         System.out.println("Joueur 2 : " + j2.getPseudo() + " (" + j2.getCouleur() + ")");
 
-        Plateau plateau;
-
-        if(type == Demo.PROMOTION){
-            plateau = new Plateau(Demo.PROMOTION);
-        }else if(type == Demo.ECHEC){
-            plateau = new Plateau(Demo.ECHEC);
-        }else if(type == Demo.ECHECETMAT){
-            plateau = new Plateau(Demo.ECHECETMAT);
-        }else if(type == Demo.GAME){
-            plateau = new Plateau(Demo.GAME);
-        }else{
-            plateau = new Plateau();
-        }
+        Plateau plateau = new Plateau(type);
         
         System.out.println(plateau);
-        
+        j1.echecJoueur(plateau);
+        j2.echecJoueur(plateau);
+
         do{
             do {
                 j1.echecJoueur(plateau);

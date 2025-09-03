@@ -111,7 +111,9 @@ public class Menu {
             System.out.println("\n\n                                 1. Promotion");
             System.out.println("                                 2. Echec");
             System.out.println("                                 3. Echec et Mat");
-            System.out.println("                                 4. Retour au menu principal\n");
+            System.out.println("                                 4. Deplacement des pion");
+            System.out.println("                                 5. Tutoriel\n");
+            System.out.println("                                 6. Retour au menu principal\n");
 
             try {
                 System.out.print("Votre choix : ");
@@ -132,9 +134,16 @@ public class Menu {
                         ChessWithMe.start(Demo.ECHECETMAT);
                         break;
                     case 4:
+                        System.out.println("Démarrage de la démo de déplacement des pions...\n");
+                        ChessWithMe.start(Demo.PION);
+                        break;
+                    case 5:
+                        System.out.println("Démarrage de la démo de tutoriel...\n");
+                        ChessWithMe.start(Demo.TUTO);
+                        break;
+                    case 6:
                         retour = true;
                         break;
-                        // Retour au menu principal
                     default:
                         System.out.println("Choix invalide. Veuillez réessayer.\n");
                 }

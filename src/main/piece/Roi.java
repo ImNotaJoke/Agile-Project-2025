@@ -125,7 +125,7 @@ public class Roi extends Piece {
     }
 
     public boolean move(Plateau plateau, int[] oldPosition, int[] newPosition) {
-        if (moveIsOk(plateau.getPlateau(), oldPosition, newPosition) && !this.echec(plateau.getPlateau(), newPosition, false)) {
+        if (moveIsOk(plateau.getPlateau(), oldPosition, newPosition)  && !this.echec(plateau.getPlateau(), newPosition, false)) {
             plateau.getPlateau()[newPosition[0]][newPosition[1]] = this;
             plateau.getPlateau()[oldPosition[0]][oldPosition[1]] = null;
             return true;
