@@ -28,16 +28,14 @@ public class Pion extends Piece {
         if (estBlanc) {
             if (newX == oldX - 1 && Math.abs(newY - oldY) == 1) {
                 Piece cible = plateau[newX][newY];
-                return (cible != null && cible.getColor() != Couleur.BLANC);
+                return cible != null && cible.getColor() != Couleur.BLANC;
             }
         }
         // Mouvement du pion noir (avance vers le haut de la matrice)
         else {
             if (newX == oldX + 1 && Math.abs(newY - oldY) == 1) {
                 Piece cible = plateau[newX][newY];
-                if(cible.getName() != PieceName.ROI){
-                    return (cible != null && cible.getColor() != Couleur.NOIR);
-                }
+                return cible != null && cible.getColor() != Couleur.NOIR;
             }
         }
         return false;
