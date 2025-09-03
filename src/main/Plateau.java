@@ -20,6 +20,21 @@ public class Plateau {
         this.initPlateau();
     }
 
+    public Plateau(Demo type) {
+        this.plateau = new Piece[8][8];
+        this.plateauCouleur = new String[8][8];
+        this.initPlateauCouleur();
+        if(type == Demo.PROMOTION){
+            this.initPromotion();
+        }else if(type == Demo.ECHEC){
+            this.initEchec();
+        }else if(type == Demo.ECHECETMAT){
+            this.initEchecEtMat();
+        }else if(type == Demo.GAME){
+            this.initPlateau();
+        }
+    }
+
     public void initPlateau() {
         for (int i = 0; i < 8; i++) {
             for (int k = 0; k < 8; k++) {
