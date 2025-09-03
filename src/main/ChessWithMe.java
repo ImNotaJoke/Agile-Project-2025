@@ -35,20 +35,14 @@ public class ChessWithMe {
         Plateau plateau = new Plateau();
         System.out.println(plateau);
 
-        switch (type) {
-            case PROMOTION:
-                plateau.initPromotion();
-                break;
-            case ECHEC:
-                plateau.initEchec();
-                break;
-            case ECHECETMAT:
-                plateau.initEchecEtMat();
-                break;
-            case GAME:
-                break;
-            default:
-                break;
+        if(type == Demo.GAME){
+            plateau.initPlateau();
+        }else if(type == Demo.ECHEC){
+            plateau.initEchec();
+        }else if(type == Demo.ECHECETMAT){
+            plateau.initEchecEtMat();
+        }else if(type == Demo.PROMOTION){
+            plateau.initPromotion();
         }
         
         do{
