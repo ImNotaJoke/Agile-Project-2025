@@ -1,21 +1,28 @@
 package main;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.Buffer;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import main.Joueur;
 
-/* Classe qui va permettre l'importation des données des joueur*/
+/* Classe qui va permettre l'importation des données basées sur les formulaires des élèves */
 public class Gestion {
     private static final String PATH = System.getProperty("user.dir")+File.separator+"groupe-15"+File.separator+"res"+File.separator; 
-    private static final String SOURCE = "historique.json";
+    private static final String SOURCE = "import.csv";
     // private static final String EXPORT = "export.csv";
-    // private static final String SERIAL_PATH = "historique.json"; 
+    private static final String SERIAL_PATH = "historique.json"; 
 
     /* Méthode static permettant l'importation des données des joueurs*/
     public static ArrayList<String> importData(){
@@ -41,24 +48,24 @@ public class Gestion {
     }
     
 
-    //public static void exportHistorique(HistoriqueJ h){
-    //     try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(PATH+SERIAL_PATH))) {
-    //         oos.writeObject(h);
-    //     }catch (IOException ioe){
-    //         System.err.println("Erreur pendant la sauvegarde : "+ioe);
-    //     }
-    // }
+    public static void exportHistorique(HistoriqueJ h){
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(PATH+SERIAL_PATH))) {
+            oos.writeObject(h);
+        }catch (IOException ioe){
+            System.err.println("Erreur pendant la sauvegarde : "+ioe);
+        }
+    }
 
-    // public static HistoriqueJ importHistorique(){
-    //     try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(PATH+SERIAL_PATH))){
-    //         return (HistoriqueJ) ois.readObject(); 
-    //     } catch(IOException ioe){
-    //         System.err.println("Erreur pendant l'importation des données : "+ioe);
-    //     }catch(ClassNotFoundException ce){
-    //         System.err.println("Aucune correspondance trouvé : "+ce);
-    //     }
-    //     return null; 
-    // }
+    public static HistoriqueJ importHistorique(){
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(PATH+SERIAL_PATH))){
+            return (HistoriqueJ) ois.readObject(); 
+        } catch(IOException ioe){
+            System.err.println("Erreur pendant l'importation des données : "+ioe);
+        }catch(ClassNotFoundException ce){
+            System.err.println("Aucune correspondance trouvé : "+ce);
+        }
+        return null; 
+    }
 
     // public static void main(String[] args) {
     //     ArrayList<String> tableImport = Gestion.importData(); 
