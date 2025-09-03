@@ -22,9 +22,9 @@ public enum Couleur {
                 continue;
             }
 
-            if (saisie.equals("1")) {
+            if (saisie.equals("1") || saisie.equalsIgnoreCase("Blanc") || saisie.equalsIgnoreCase("White") || saisie.equalsIgnoreCase("B")) {
                 return Couleur.BLANC;
-            } else if (saisie.equals("2")) {
+            } else if (saisie.equals("2") || saisie.equalsIgnoreCase("Noir") || saisie.equalsIgnoreCase("Black") || saisie.equalsIgnoreCase("N")) {
                 return Couleur.NOIR;
             } else {
                 System.out.println("Choix invalide, veuillez entrer 1 ou 2.");
