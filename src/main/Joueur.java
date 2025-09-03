@@ -79,10 +79,14 @@ public class Joueur {
                 boolean c2IsDigit  = c2 >= '1' && c2 <= '8';
 
                 // Vérifie qu'il y a exactement 1 lettre et 1 chiffre
-                if ((c1IsLetter && c2IsDigit) || (c1IsDigit && c2IsLetter)) {
+                if (c1IsLetter && c2IsDigit) {
                     System.out.println("Entrée valide : " + input);
                     tabco[0] = input.charAt(1) - '0' - 1;
-                    tabco[1] = Character.toLowerCase(input.charAt(0)) - 'a';
+                    tabco[1] = Character.toLowerCase(input.charAt(0)) - 'a';       
+                    return tabco;
+                }else if(c1IsDigit && c2IsLetter){
+                    tabco[0] = input.charAt(0) - '0' - 1;
+                    tabco[1] = Character.toLowerCase(input.charAt(1)) - 'a';
                     return tabco;
                 } else {
                     throw new IllegalArgumentException("Position invalide. Utilisez une position comme 'a2' ou '2a'.");
