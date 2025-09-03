@@ -32,23 +32,26 @@ public class ChessWithMe {
         System.out.println("Joueur 1 : " + j1.getPseudo() + " (" + j1.getCouleur() + ")");
         System.out.println("Joueur 2 : " + j2.getPseudo() + " (" + j2.getCouleur() + ")");
 
-        Plateau plateau = new Plateau();
-        System.out.println(plateau);
+        Plateau plateau;
 
-        if(type == Demo.GAME){
-            plateau.initPlateau();
+        if(type == Demo.PROMOTION){
+            plateau = new Plateau(Demo.PROMOTION);
         }else if(type == Demo.ECHEC){
-            plateau.initEchec();
+            plateau = new Plateau(Demo.ECHEC);
         }else if(type == Demo.ECHECETMAT){
-            plateau.initEchecEtMat();
-        }else if(type == Demo.PROMOTION){
-            plateau.initPromotion();
+            plateau = new Plateau(Demo.ECHECETMAT);
+        }else if(type == Demo.GAME){
+            plateau = new Plateau(Demo.GAME);
+        }else{
+            plateau = new Plateau();
         }
+        
+        System.out.println(plateau);
         
         do{
             do {
+                j1.echecJoueur(plateau);
                 int [] co1 = j1.choixDeplacement("Choisissez une pièce à déplacer (ex: a2 ou 2a): ");
-                
                 if(co1[0] == -1 && co1[1] == -1){
                     start(type);
                     return;
@@ -60,6 +63,7 @@ public class ChessWithMe {
             } while (readyj1);
             wait(1000);
             do {
+                j2.echecJoueur(plateau);
                 int [] co3 = j1.choixDeplacement("Choisissez une pièce à déplacer (ex: a2 ou 2a): ");
                 if(co3[0] == -1 && co3[1] == -1){
                     start(type);
