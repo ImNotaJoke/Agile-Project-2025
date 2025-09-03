@@ -24,14 +24,14 @@ public class Pion extends Piece {
         // Mouvement du pion blanc (avance vers le bas de la matrice si [0][0] est en
         // haut à gauche)
         if (estBlanc) {
-            if (newX == oldX + 1 && Math.abs(newY - oldY) == 1) {
+            if (newX == oldX - 1 && Math.abs(newY - oldY) == 1) {
                 Piece cible = plateau[newX][newY];
                 return (cible != null && cible.getColor() != Couleur.BLANC);
             }
         }
         // Mouvement du pion noir (avance vers le haut de la matrice)
         else {
-            if (newX == oldX - 1 && Math.abs(newY - oldY) == 1) {
+            if (newX == oldX + 1 && Math.abs(newY - oldY) == 1) {
                 Piece cible = plateau[newX][newY];
                 return (cible != null && cible.getColor() != Couleur.NOIR);
             }
