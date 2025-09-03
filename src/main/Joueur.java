@@ -66,7 +66,7 @@ public class Joueur {
 
                 if(input.equalsIgnoreCase("exit") || input.equalsIgnoreCase("quit") || input.equalsIgnoreCase("leave") || input.equalsIgnoreCase("quitter")){
                     System.out.println("Partie terminée.");
-                    System.exit(0);
+                    Menu.start();
                 }
 
                 if(input.equalsIgnoreCase("reset") || input.equalsIgnoreCase("restart") || input.equalsIgnoreCase("recommencer")){
