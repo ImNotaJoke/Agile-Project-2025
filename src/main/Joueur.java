@@ -64,6 +64,16 @@ public class Joueur {
                 System.out.println(entree);
                 input = scanner.nextLine().trim();
 
+                if(input.equalsIgnoreCase("exit") || input.equalsIgnoreCase("quit") || input.equalsIgnoreCase("leave") || input.equalsIgnoreCase("quitter")){
+                    System.out.println("Partie terminée.");
+                    System.exit(0);
+                }
+
+                if(input.equalsIgnoreCase("reset") || input.equalsIgnoreCase("restart") || input.equalsIgnoreCase("recommencer")){
+                    System.out.println("Partie réinitialisée.");
+                    return new int[]{-1, -1}; // Indique une réinitialisation
+                }
+                
                 // Vérification longueur exacte = 2
                 if (input.length() != 2) {
                     throw new IllegalArgumentException("Format de position invalide. Utilisez le format 'a2'.");
@@ -99,11 +109,8 @@ public class Joueur {
         }
     }
 
-    public boolean demanderDeplacement(Plateau plateau){
-        int[] co1;
-        int[] co2;
+    public boolean demanderDeplacement(Plateau plateau, int [] co1,int []co2) {
 
-        co1 = choixDeplacement("Choisissez une pièce à déplacer (ex: a2 ou 2a): ");
 
         if(plateau.getPlateau()[co1[0]][co1[1]] == null){
             System.out.println("Case vide");
@@ -114,8 +121,6 @@ public class Joueur {
             System.out.println("Mauvaise couleur");
             return false;
         }
-
-        co2 = choixDeplacement("Où voulez vous la bouger ? (ex: a2 ou 2a): ");
         
         return plateau.getPlateau()[co1[0]][co1[1]].move(plateau,co1,co2);
     }

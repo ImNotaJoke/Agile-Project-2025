@@ -39,13 +39,26 @@ public class ChessWithMe {
         
         do{
             do {
-                readyj1 = !j1.demanderDeplacement(plateau);
+                int [] co1 = j1.choixDeplacement("Choisissez une pièce à déplacer (ex: a2 ou 2a): ");
+                
+                if(co1[0] == -1 && co1[1] == -1){
+                    start(type);
+                    return;
+                }
+                int [] co2 = j2.choixDeplacement("Où voulez vous la bouger ? (ex: a2 ou 2a): ");
+                readyj1 = !j1.demanderDeplacement(plateau,co1,co2);
                 clearConsole();
                 System.out.println(plateau);
             } while (readyj1);
             wait(1000);
             do {
-                readyj2 = !j2.demanderDeplacement(plateau);
+                int [] co3 = j1.choixDeplacement("Choisissez une pièce à déplacer (ex: a2 ou 2a): ");
+                if(co3[0] == -1 && co3[1] == -1){
+                    start(type);
+                    return;
+                }
+                int [] co4 = j2.choixDeplacement("Où voulez vous la bouger ? (ex: a2 ou 2a): ");
+                readyj2 = !j2.demanderDeplacement(plateau,co3,co4);
                 clearConsole();
                 System.out.println(plateau);
             } while (readyj2);
