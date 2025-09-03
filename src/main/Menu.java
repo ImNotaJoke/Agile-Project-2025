@@ -1,12 +1,12 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class Menu {
 
-    public static void main(String[] args) {
+    public static void start() {
         Scanner menu = new Scanner(System.in);
         boolean quitter = false;    
 
@@ -22,11 +22,11 @@ public class Menu {
                 switch (choix) {
                     case 0:
                         fakeClear();
-                        afficherJouer(menu);
+                        afficherDemo(menu);
                         break;
                     case 1:
                         fakeClear();
-                        afficherDemo(menu); 
+                        afficherJouer(menu); 
                         break;
                     case 2:
                         fakeClear();
@@ -235,5 +235,9 @@ public class Menu {
     public static void fakeClear() {
         System.out.println("\n".repeat(50));
     }
+    public static void main(String[] args) {
+        Menu.start();
+    }
 
 }
+

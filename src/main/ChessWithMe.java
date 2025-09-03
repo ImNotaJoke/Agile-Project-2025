@@ -35,7 +35,15 @@ public class ChessWithMe {
         Plateau plateau = new Plateau();
         System.out.println(plateau);
 
-        
+        if(type == Demo.GAME){
+            plateau.initPlateau();
+        }else if(type == Demo.ECHEC){
+            plateau.initEchec();
+        }else if(type == Demo.ECHECETMAT){
+            plateau.initEchecEtMat();
+        }else if(type == Demo.PROMOTION){
+            plateau.initPromotion();
+        }
         
         do{
             do {
