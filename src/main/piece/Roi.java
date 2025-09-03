@@ -127,7 +127,7 @@ public class Roi extends Piece {
 
     public boolean move(Plateau plateau, int[] oldPosition, int[] newPosition) {
         Piece[][] plat = plateau.getPlateau();
-        if (moveIsOk(plateau.getPlateau(), oldPosition, newPosition)) {
+        if (moveIsOk(plateau.getPlateau(), oldPosition, newPosition) && newPosition != oldPosition) {
             Piece temp = plateau.getPlateau()[newPosition[0]][newPosition[1]];
             plateau.getPlateau()[newPosition[0]][newPosition[1]] = this;
             if((plateau.getRoi(color).echec(plat, plateau.getPositionRoi(this.getColor())) == false) || plateau.getRoi(color).echecPos(plat, plateau.getPositionRoi(this.getColor())) == newPosition) {
