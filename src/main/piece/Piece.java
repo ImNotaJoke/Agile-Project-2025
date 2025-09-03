@@ -12,6 +12,10 @@ public abstract class Piece {
         this.name = name;
     }
 
+    public PieceName getName() {
+        return this.name;
+    }
+    
     public Couleur getColor() {
         return this.color;
     }

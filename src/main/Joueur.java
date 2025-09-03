@@ -65,8 +65,8 @@ public class Joueur {
     }
 
     public boolean demanderDeplacement(Plateau plateau){
-        String co1 = "";
-        String co2 = "";
+        String co1;
+        String co2;
         int[] co1tab;
         int[] co2tab;
 
@@ -74,6 +74,7 @@ public class Joueur {
         System.out.println(this.pseudo + " quel piece veux tu bouger ?");
         co1 = sc.nextLine();
         co1tab = transformerCo(co1);
+        if(co1tab == null) return false;
 
         if(plateau.getPlateau()[co1tab[0]][co1tab[1]] == null){
             System.out.println("Case vide");
@@ -88,6 +89,7 @@ public class Joueur {
         System.out.println(this.pseudo + " où veux tu la bouger ?");
         co2 = sc.nextLine();
         co2tab = transformerCo(co2);
+        if(co2tab == null) return false;
         
         return plateau.getPlateau()[co1tab[0]][co1tab[1]].move(plateau,co1tab,co2tab);
     }
