@@ -50,8 +50,8 @@ public class ChessWithMe {
         
         do{
             do {
+                j1.echecJoueur(plateau);
                 int [] co1 = j1.choixDeplacement("Choisissez une pièce à déplacer (ex: a2 ou 2a): ");
-                
                 if(co1[0] == -1 && co1[1] == -1){
                     start(type);
                     return;
@@ -63,6 +63,7 @@ public class ChessWithMe {
             } while (readyj1);
             wait(1000);
             do {
+                j2.echecJoueur(plateau);
                 int [] co3 = j1.choixDeplacement("Choisissez une pièce à déplacer (ex: a2 ou 2a): ");
                 if(co3[0] == -1 && co3[1] == -1){
                     start(type);
