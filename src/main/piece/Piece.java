@@ -3,13 +3,24 @@ package main.piece;
 import main.Couleur;
 import main.Plateau;
 
-public abstract class Piece {
+public abstract class Piece<T> {
     Couleur color;
     PieceName name;
+
+    // Exemple d'utilisation d'un type générique
+    private T extraInfo;
 
     public Piece(Couleur color, PieceName name) {
         this.color = color;
         this.name = name;
+    }
+
+    public void setExtraInfo(T info) {
+        this.extraInfo = info;
+    }
+
+    public T getExtraInfo() {
+        return extraInfo;
     }
 
     public PieceName getName() {
