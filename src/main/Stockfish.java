@@ -7,7 +7,7 @@ public class Stockfish{
     private BufferedReader processReader;
     private BufferedWriter processWriter;
 
-    public StockFish(String pathToEngine) throws IOException {
+    public Stockfish(String pathToEngine) throws IOException {
         ProcessBuilder pb = new ProcessBuilder(pathToEngine);
         pb.redirectErrorStream(true);
         engineProcess = pb.start();

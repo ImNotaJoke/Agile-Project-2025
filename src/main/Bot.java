@@ -6,7 +6,7 @@ public class Bot {
 
     public Bot() throws Exception {
         // adapte le chemin selon ton OS
-        engine = new Stockfish("engines/stockfish.exe");
+        engine = new Stockfish("./engines/stockfish.exe");
     }
 
     public String jouer(Plateau plateau) throws Exception {
