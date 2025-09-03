@@ -119,4 +119,8 @@ public class Joueur {
         
         return plateau.getPlateau()[co1[0]][co1[1]].move(plateau,co1,co2);
     }
+
+    public void echecJoueur(Plateau plateau){
+        plateau.getRoi(this.getCouleur()).echec(plateau.getPlateau(), plateau.getPositionRoi(this.getCouleur()));
+    }
 }

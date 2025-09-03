@@ -36,7 +36,7 @@ public class ChessWithMe {
         System.out.println(plateau);
         
         do{
-            do { 
+            do {
                 readyj1 = !j1.demanderDeplacement(plateau);
                 clearConsole();
                 System.out.println(plateau);
