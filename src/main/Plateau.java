@@ -120,4 +120,16 @@ public class Plateau {
         }
         return null; // Roi non trouvé
     }
+
+    public int[] getPositionRoi(Couleur color) {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                Piece piece = plateau[i][j];
+                if (piece != null && piece.getName() == main.piece.PieceName.ROI && piece.getColor() == color) {
+                    return new int[] {i, j};
+                }
+            }
+        }
+        return null; // Roi non trouvé
+    }
 }
