@@ -27,7 +27,7 @@ public class Roi extends Piece {
                 Piece piece = plateau[i][j];
                 if (piece != null && piece.getColor() != this.getColor()) {
                     if (piece.moveIsOk(plateau, new int[] { i, j }, positionRoi)) {
-                        System.out.println("Le roi est en échec par " + piece.getName() + " en position (" + (i+1) + ", " + (j+1) + ")");
+                        System.out.println("Le roi est en échec par la pièce ");
                         return true; // Le roi est en échec
                     }
                 }
@@ -36,8 +36,95 @@ public class Roi extends Piece {
         return false; // Le roi n'est pas en échec
     }
 
+    private boolean echec(Piece[][] plateau, int[] positionRoi, boolean entré) {
+        // Vérifie si une pièce adverse peut capturer le roi à sa position actuelle
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                Piece piece = plateau[i][j];
+                if (piece != null && piece.getColor() != this.getColor()) {
+                    if (piece.moveIsOk(plateau, new int[] { i, j }, positionRoi)) {
+                        return true; // Le roi est en échec
+                    }
+                }
+            }
+        }
+        return false; // Le roi n'est pas en échec
+    }
+
+    public int[] echecPos(Piece[][] plateau, int[] positionRoi) {
+        // Retourne la position de la pièce qui met le roi en échec, ou null si le roi n'est pas en échec
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                Piece piece = plateau[i][j];
+                if (piece != null && piece.getColor() != this.getColor()) {
+                    if (piece.moveIsOk(plateau, new int[] { i, j }, positionRoi)) {
+                        return new int[] { i, j }; // Retourne la position de la pièce qui met le roi en échec
+                    }
+                }
+            }
+        }
+        return new int[] { -1, -1 }; // Le roi n'est pas en échec
+    }
+
+    public boolean contreEchec(Piece[][] plateau, int[] positionRoi, int[] positionPiece) {
+        // Vérifie si une pièce alliée peut capturer la pièce qui met le roi en échec
+        Piece pieceEchec = plateau[positionPiece[0]][positionPiece[1]];
+        if (pieceEchec == null || pieceEchec.getColor() == this.getColor()) {
+            return false; // Pas de pièce ennemie à la position donnée
+        }
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                Piece piece = plateau[i][j];
+                if (piece != null && piece.getColor() == this.getColor() && !(piece instanceof Roi)) {
+                    if (piece.moveIsOk(plateau, new int[] { i, j }, positionPiece)) {
+                        return true; // Une pièce alliée peut capturer la pièce qui met le roi en échec
+                    }
+                }
+            }
+        }
+        // Vérifie si une pièce alliée peut se mettre en bouclier
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                Piece piece = plateau[i][j];
+                if (piece != null && piece.getColor() == this.getColor() && !(piece instanceof Roi)) {
+                    // Vérifie si la pièce peut se déplacer entre le roi et la pièce qui met en échec
+                    int deltaX = Integer.signum(positionPiece[0] - positionRoi[0]);
+                    int deltaY = Integer.signum(positionPiece[1] - positionRoi[1]);
+                    int x = positionRoi[0] + deltaX;
+                    int y = positionRoi[1] + deltaY;
+                    while (x != positionPiece[0] || y != positionPiece[1]) {
+                        if (piece.moveIsOk(plateau, new int[] { i, j }, new int[] { x, y })) {
+                            return true; // Une pièce alliée peut se mettre en bouclier
+                        }
+                        x += deltaX;
+                        y += deltaY;
+                    }
+                }
+            }
+        }
+        return false; // Aucune pièce alliée ne peut capturer la pièce qui met le roi en échec
+    }
+
+    public boolean echecEtMat(Piece[][] plateau, int[] positionRoi) {
+        // Vérifie si le roi est en échec et s'il n'a pas de mouvement légal pour s'échapper
+        plateau[positionRoi[0]][positionRoi[1]] = null; // Assure que le roi est à sa position actuelle
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (moveIsOk(plateau, positionRoi, new int[] { i, j }) && !echec(plateau, new int[] { i, j }, false)) {
+                    return false; // Le roi peut s'échapper
+                }
+            }
+        }
+        plateau[positionRoi[0]][positionRoi[1]] = this; // Remet le roi à sa position actuelle
+        if(contreEchec(plateau, positionRoi, echecPos(plateau, positionRoi))){
+            return false; // Une pièce alliée peut capturer la pièce qui met le roi en échec
+        }
+        System.out.println("Le roi est en échec et mat");
+        return true; // Le roi est en échec et mat
+    }
+
     public boolean move(Plateau plateau, int[] oldPosition, int[] newPosition) {
-        if (moveIsOk(plateau.getPlateau(), oldPosition, newPosition)) {
+        if (moveIsOk(plateau.getPlateau(), oldPosition, newPosition) && !this.echec(plateau.getPlateau(), newPosition, false)) {
             plateau.getPlateau()[newPosition[0]][newPosition[1]] = this;
             plateau.getPlateau()[oldPosition[0]][oldPosition[1]] = null;
             return true;
