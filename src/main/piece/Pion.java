@@ -105,17 +105,18 @@ public class Pion extends Piece {
             }
         }
         Piece[][] plat = plateau.getPlateau();
-        if (this.moveIsOk(plat, oldPosition, newPosition)  && (plateau.getRoi(color).echec(plat, plateau.getPositionRoi(this.getColor())) == false)) {
-            plat[newPosition[0]][newPosition[1]] = this;
-            plat[oldPosition[0]][oldPosition[1]] = null;
-            plateau.setPlateau(plat);
-            premierCoup = false;
-            this.promotion(plateau, newPosition);
-            return true;
-        } else {
-            System.out.println("Mouvement impossible pour le pion");
-            return false;
+        if (moveIsOk(plateau.getPlateau(), oldPosition, newPosition)) {
+            plateau.getPlateau()[newPosition[0]][newPosition[1]] = this;
+            if((plateau.getRoi(color).echec(plat, plateau.getPositionRoi(this.getColor())) == false) || plateau.getRoi(color).echecPos(plat, plateau.getPositionRoi(this.getColor())) == newPosition) {
+                plateau.getPlateau()[oldPosition[0]][oldPosition[1]] = null;
+                return true;
+            }else {
+                plateau.getPlateau()[oldPosition[0]][oldPosition[1]] = this;
+                plateau.getPlateau()[newPosition[0]][newPosition[1]] = null;
+            }
         }
+        System.out.println("Mouvement impossible pour le pion");
+        return false;
     }
 
     public void setPremierCoup(boolean premierCoup) {
