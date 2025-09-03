@@ -1,22 +1,21 @@
 package main;
-import 
-public class Bot {
-    private Couleur couleur;
 
-    public Bot(Couleur couleur) {
-        this.couleur = couleur;
+
+public class Bot {
+    private Stockfish engine;
+
+    public Bot() throws Exception {
+        // adapte le chemin selon ton OS
+        engine = new Stockfish("engines/stockfish.exe");
     }
 
-    public void jouer(Plateau plateau) {
-        // 1️⃣ Récupérer la FEN du plateau
+    public String jouer(Plateau plateau) throws Exception {
         String fen = plateau.toFEN();
-        System.out.println("FEN actuelle : " + fen);
+        String bestMove = engine.getBestMove(fen, 15); // profondeur 15
+        return bestMove;
+    }
 
-        // 2️⃣ Calculer le meilleur coup avec Carballo (exemple)
-        String bestMove = CarballoEngine.getBestMove(fen, couleur); // méthode fictive à adapter
-        System.out.println("Bot joue : " + bestMove);
-
-        // 3️⃣ Appliquer le coup sur le plateau
-        plateau.appliquerCoupUCI(bestMove);
+    public void close() throws Exception {
+        engine.close();
     }
 }
