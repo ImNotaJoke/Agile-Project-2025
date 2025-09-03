@@ -103,7 +103,7 @@ public class Joueur {
         int[] co1;
         int[] co2;
 
-        co1 = choixDeplacement("Choisissez une pièce à déplacer (ex: a2 ou 2a): ");
+        co1 = choixDeplacement(this.pseudo + " Choisie une pièce à déplacer (ex: a2 ou 2a): ");
 
         if(plateau.getPlateau()[co1[0]][co1[1]] == null){
             System.out.println("Case vide");
@@ -115,7 +115,7 @@ public class Joueur {
             return false;
         }
 
-        co2 = choixDeplacement("Où voulez vous la bouger ? (ex: a2 ou 2a): ");
+        co2 = choixDeplacement(this.pseudo + "où veux-tu bouger la pièce ? (ex: a2 ou 2a): ");
         
         return plateau.getPlateau()[co1[0]][co1[1]].move(plateau,co1,co2);
     }
