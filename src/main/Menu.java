@@ -22,11 +22,11 @@ public class Menu {
                 switch (choix) {
                     case 0:
                         fakeClear();
-                        afficherJouer(menu);
+                        afficherDemo(menu);
                         break;
                     case 1:
                         fakeClear();
-                        afficherDemo(menu); 
+                        afficherJouer(menu); 
                         break;
                     case 2:
                         fakeClear();

@@ -35,7 +35,21 @@ public class ChessWithMe {
         Plateau plateau = new Plateau();
         System.out.println(plateau);
 
-        
+        switch (type) {
+            case PROMOTION:
+                plateau.initPromotion();
+                break;
+            case ECHEC:
+                plateau.initEchec();
+                break;
+            case ECHECETMAT:
+                plateau.initEchecEtMat();
+                break;
+            case GAME:
+                break;
+            default:
+                break;
+        }
         
         do{
             do {
