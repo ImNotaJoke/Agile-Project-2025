@@ -4,6 +4,7 @@ import main.Couleur;
 import main.Plateau;
 
 public class Roi extends Piece {
+    boolean deplacer = false;
     public Roi(Couleur color) {
         super(color, PieceName.ROI);
     }
@@ -133,6 +134,7 @@ public class Roi extends Piece {
             plateau.getPlateau()[newPosition[0]][newPosition[1]] = this;
             if((plateau.getRoi(color).echec(plat, plateau.getPositionRoi(this.getColor())) == false) || plateau.getRoi(color).echecPos(plat, plateau.getPositionRoi(this.getColor())) == newPosition) {
                 plateau.getPlateau()[oldPosition[0]][oldPosition[1]] = null;
+                this.deplacer = true;
                 return true;
             }else {
                 plateau.getPlateau()[newPosition[0]][newPosition[1]] = temp;

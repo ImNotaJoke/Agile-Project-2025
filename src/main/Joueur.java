@@ -1,9 +1,8 @@
 package main;
 
 import java.util.Scanner;
-
-import main.historiqueMouvement.Historique;
 import main.piece.*;
+import main.historiqueMouvement.Historique;
 public class Joueur {
     /* Attributs */
     private String pseudo;
@@ -61,7 +60,7 @@ public class Joueur {
         char c1;
         char c2;
         int[] tabco = new int[2];
-        Plateau plateau = null;
+        Plateau plateau;
 
         while (true) {
             try {
@@ -77,14 +76,14 @@ public class Joueur {
                     System.out.println("Partie réinitialisée.");
                     return new int[]{-1, -1}; // Indique une réinitialisation
                 }
-
-                if(input.equalsIgnoreCase("historique")){
-                    plateau = historique.afficher();
-                    historique.emptying();
+                
+                if (input.equalsIgnoreCase("hisotique") || input.equalsIgnoreCase("history") || input.equalsIgnoreCase("histoire")){
+                    historique.afficher();
                     System.out.print("\033[2J");
                     System.out.flush();
-                    System.out.println(plateau);
+                    throw new IllegalArgumentException("Historique affiché. Veuillez entrer une position valide.");
                 }
+
                 // Vérification longueur exacte = 2
                 if (input.length() != 2) {
                     throw new IllegalArgumentException("Format de position invalide. Utilisez le format 'a2'.");
@@ -103,13 +102,11 @@ public class Joueur {
                 if (c1IsLetter && c2IsDigit) {
                     System.out.println("Entrée valide : " + input);
                     tabco[0] = input.charAt(1) - '0' - 1;
-                    tabco[1] = Character.toLowerCase(input.charAt(0)) - 'a';
-                    historique.add(input);
+                    tabco[1] = Character.toLowerCase(input.charAt(0)) - 'a';       
                     return tabco;
                 }else if(c1IsDigit && c2IsLetter){
                     tabco[0] = input.charAt(0) - '0' - 1;
                     tabco[1] = Character.toLowerCase(input.charAt(1)) - 'a';
-                    historique.add(input);
                     return tabco;
                 } else {
                     throw new IllegalArgumentException("Position invalide. Utilisez une position comme 'a2' ou '2a'.");

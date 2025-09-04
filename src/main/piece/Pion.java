@@ -1,7 +1,6 @@
 package main.piece;
 
 import java.util.Scanner;
-
 import main.Couleur;
 import main.Plateau;
 

@@ -8,7 +8,6 @@ public class Tour extends Piece {
         super(color, PieceName.TOUR);
     }
 
-    
 
     public boolean moveIsOk(Piece[][] plateau, int[] oldPosition, int[] newPosition) {
         if(newPosition[0] == oldPosition[0] && newPosition[1] == oldPosition[1]) return false;

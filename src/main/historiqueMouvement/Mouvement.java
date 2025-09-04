@@ -17,9 +17,9 @@ public class Mouvement implements Historique {
 
     @Override
     public void add(String move) {
-        if(tempString.length() == 4){
+        if(tempString.length() == 2){
+            tempString = tempString + move;
             hist.add(tempString);
-            System.out.println("added");
             tempString = "";
         }else{
             tempString = tempString + move;
@@ -49,9 +49,8 @@ public class Mouvement implements Historique {
         System.out.flush();
         
         System.out.println("Historique des mouvements :");
-        for (int i = 0; i <= hist.size(); i++) {
-            String move = temp.get(i);
-            System.out.println(move.charAt(0) +  move.charAt(1) + "->" + move.charAt(2) + move.charAt(3));
+        for (String move : hist) {
+            System.out.println("" + move.charAt(0) +  move.charAt(1) + "->" + move.charAt(2) + move.charAt(3));
         }
         System.out.println("Appuyez sur Entrée pour continuer...");
         Scanner scanner = new Scanner(System.in);
