@@ -1,7 +1,6 @@
 package main.piece;
 
 import java.util.Scanner;
-
 import main.Couleur;
 import main.Plateau;
 
@@ -110,7 +109,6 @@ public class Pion extends Piece {
             if((plateau.getRoi(color).echec(plat, plateau.getPositionRoi(this.getColor())) == false) || plateau.getRoi(color).echecPos(plat, plateau.getPositionRoi(this.getColor())) == newPosition) {
                 plateau.getPlateau()[oldPosition[0]][oldPosition[1]] = null;
                 promotion(plateau, newPosition);
-                System.out.println("N");
                 return true;
             }else {
                 plateau.getPlateau()[newPosition[0]][newPosition[1]] = null;
