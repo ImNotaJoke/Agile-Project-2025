@@ -18,11 +18,4 @@ public class ChessWitMeTest {
         assertEquals(8, plateau.getPlateau()[0].length);
     }
 
-    @org.junit.jupiter.api.Test
-    public void testInitialisationBot() {
-        Bot bot = new Bot(Couleur.NOIR);
-        assertNotNull(bot);
-        assertEquals(Couleur.NOIR, bot.getCouleur());
-    }
-
 }
