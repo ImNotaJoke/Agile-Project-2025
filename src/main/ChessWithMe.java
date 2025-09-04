@@ -103,7 +103,6 @@ public class ChessWithMe {
     System.out.println("Joueur : entrez votre pseudo : ");
     String nom = sc.nextLine();
     clearConsole();
-    Couleur couleur = Couleur.demandeCouleur();
     Joueur humain = new Joueur(nom, Couleur.NOIR);
 
     // --- Initialisation Bot ---
