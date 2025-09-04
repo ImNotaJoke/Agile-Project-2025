@@ -89,13 +89,12 @@ public class Menu {
                         ChessWithMe.start(Demo.GAME);
                         break;
                     case 2:
-                        System.out.println("En cours de création...\n");
-                        // En attente...
+                        System.out.println("Démarrage de la partie contre le Bot...\n");
+                        ChessWithMe.startBot(Demo.GAME);
                         break;
                     case 3:
                         retour = true;
                         break;
-                        // Retour au menu principal
                     default:
                         System.out.println("Choix invalide. Veuillez réessayer.\n");
                 }
@@ -105,6 +104,7 @@ public class Menu {
             }
         }
     }
+
 
     public static void afficherDemo(Scanner scanner) {
         boolean retour = false;

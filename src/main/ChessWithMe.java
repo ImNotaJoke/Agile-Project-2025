@@ -1,9 +1,8 @@
 package main;
 
 import java.util.Scanner;
-import main.historiqueMouvement.*;
-import main.piece.*;
-import main.Menu;
+
+import main.piece.Roi;
 
 
 public class ChessWithMe {
@@ -35,7 +34,7 @@ public class ChessWithMe {
         }
 
         Plateau plateau = new Plateau(type);
-        Historique historique = new Mouvement(plateau);
+        
         clearConsole();
         Menu.afficherTitre();
         System.out.println(plateau);
@@ -70,12 +69,11 @@ public class ChessWithMe {
                 System.out.println(plateau);
             } while (readyj1);
 
-
             wait(1000);
 
             do {
                 noir.echecJoueur(plateau);
-                int [] co3 = noir.choixDeplacement(noir.getPseudo() + " choisissez une pièce à déplacer (ex: a2 ou 2a) (Joueur " + j2.getCouleur() + "):", historique);
+                int [] co3 = noir.choixDeplacement(noir.getPseudo() + " Choisissez une pièce à déplacer (ex: a2 ou 2a) (Joueur " + j2.getCouleur() + "):", historique);
                 if(co3[0] == -1 && co3[1] == -1){
                     start(type);
                     return;
@@ -93,6 +91,72 @@ public class ChessWithMe {
             readyj2 = false;
         }while(true);
     }
+
+   public static void startBot(Demo type) {
+    Scanner sc = new Scanner(System.in);
+
+    // --- Initialisation joueur ---
+    clearConsole();
+    System.out.println("Joueur : entrez votre pseudo : ");
+    String nom = sc.nextLine();
+    clearConsole();
+    Couleur couleur = Couleur.demandeCouleur();
+    Joueur humain = new Joueur(nom, Couleur.NOIR);
+
+    // --- Initialisation Bot ---
+    Couleur botColor = Couleur.NOIR ;
+    Bot bot;
+    try {
+        bot = new Bot();
+    } catch (Exception e) {
+        System.out.println("Erreur lors du démarrage du Bot : " + e.getMessage());
+        return;
+    }
+
+    // --- Initialisation plateau ---
+    Plateau plateau = new Plateau(type);
+
+    boolean readyHuman = true;
+
+    // --- Début de la boucle de jeu ---
+    while (true) {
+        // --- Tour Humain ---
+        do {
+            humain.echecJoueur(plateau);
+            int[] co1 = humain.choixDeplacement(humain.getPseudo() + " choisissez une pièce à déplacer : ");
+            if (co1[0] == -1) { startBot(type); return; } // reset
+            clearConsole();
+            System.out.println(plateau);
+            int[] co2 = humain.choixDeplacement("Où voulez-vous déplacer la pièce ?");
+            readyHuman = !humain.demanderDeplacement(plateau, co1, co2);
+            clearConsole();
+            System.out.println(plateau);
+        } while (readyHuman);
+
+    
+
+        // --- Tour du Bot ---
+        try {
+            System.out.println("Le Bot réfléchit...");
+            Thread.sleep(1000); // Pause pour simuler la réflexion du bot
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        //Le bot doit jouer son coup
+        String move = "";
+        try {
+            move = bot.jouer(plateau);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        plateau.appliquerCoupUCI(move);
+        System.out.println("Bot joue : " + move);
+        wait(1000);
+        clearConsole();
+        System.out.println(plateau);}
+    }
+
 
     public static void wait(int ms)
     {
