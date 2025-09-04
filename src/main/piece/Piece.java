@@ -114,6 +114,13 @@ public abstract class Piece<T> {
         return true;
     }
 
+    public boolean forceMove(Plateau plateau, int[] oldPosition, int[] newPosition) {
+        Piece[][] plat = plateau.getPlateau();
+        plat[oldPosition[0]][1] = plat[newPosition[0]][newPosition[1]];
+        plat[newPosition[0]][newPosition[1]] = null;
+        return false;
+    }
+
     public abstract boolean move(Plateau plateau, int[] oldPosition, int[] newPosition);
 
 }
