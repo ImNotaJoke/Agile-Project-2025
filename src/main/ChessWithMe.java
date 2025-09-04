@@ -101,10 +101,10 @@ public class ChessWithMe {
     String nom = sc.nextLine();
     clearConsole();
     Couleur couleur = Couleur.demandeCouleur();
-    Joueur humain = new Joueur(nom, couleur);
+    Joueur humain = new Joueur(nom, Couleur.NOIR);
 
     // --- Initialisation Bot ---
-    Couleur botColor = (couleur == Couleur.BLANC) ? Couleur.NOIR : Couleur.BLANC;
+    Couleur botColor = Couleur.NOIR ;
     Bot bot;
     try {
         bot = new Bot();
