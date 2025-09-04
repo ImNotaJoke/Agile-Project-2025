@@ -133,12 +133,6 @@ public class Joueur {
             System.out.println("Mauvaise couleur");
             return false;
         }
-
-        if(plateau.getPlateau()[co1[0]][co1[1]].getColor().equals(plateau.getPlateau()[co2[0]][co2[1]].getColor())){
-            ChessWithMe.clearConsole();
-            System.out.println("Mauvaise couleur");
-            return false;
-        }
         
         return plateau.getPlateau()[co1[0]][co1[1]].move(plateau,co1,co2);
     }
