@@ -3,6 +3,8 @@ package main;
 import java.util.Scanner;
 
 import main.piece.Roi;
+import main.historiqueMouvement.Historique;
+import main.historiqueMouvement.Mouvement;
 
 
 public class ChessWithMe {
@@ -34,7 +36,8 @@ public class ChessWithMe {
         }
 
         Plateau plateau = new Plateau(type);
-        
+        Historique historique = new Mouvement(plateau);
+
         clearConsole();
         Menu.afficherTitre();
         System.out.println(plateau);
@@ -55,7 +58,7 @@ public class ChessWithMe {
         do{
             do {
                 blanc.echecJoueur(plateau);
-                int [] co1 = blanc.choixDeplacement(blanc.getPseudo() + " choisie une pièce à déplacer (ex: a2 ou 2a) (Joueur " + j1.getCouleur() + "):");
+                int [] co1 = blanc.choixDeplacement(blanc.getPseudo() + " Choisissez une pièce à déplacer (ex: a2 ou 2a) (Joueur " + j1.getCouleur() + "):", historique);
                 if(co1[0] == -1 && co1[1] == -1){
                     start(type);
                     return;
@@ -63,7 +66,7 @@ public class ChessWithMe {
                 clearConsole();
                 Menu.afficherTitre();
                 System.out.println(plateau);
-                int [] co2 = blanc.choixDeplacement(blanc.getPseudo() + " où voux tu bouger la pièce ? (ex: a2 ou 2a): ");
+                int [] co2 = blanc.choixDeplacement(blanc.getPseudo() + " Où veux tu bouger la pièce ? (ex: a2 ou 2a): ", historique);
                 readyj1 = !blanc.demanderDeplacement(plateau,co1,co2);
                 Menu.afficherTitre();
                 System.out.println(plateau);
@@ -73,7 +76,7 @@ public class ChessWithMe {
 
             do {
                 noir.echecJoueur(plateau);
-                int [] co3 = noir.choixDeplacement(noir.getPseudo() + " choisie une pièce à déplacer (ex: a2 ou 2a) (Joueur " + j2.getCouleur() + "):");
+                int [] co3 = noir.choixDeplacement(noir.getPseudo() + " Choisissez une pièce à déplacer (ex: a2 ou 2a) (Joueur " + j2.getCouleur() + "):", historique);
                 if(co3[0] == -1 && co3[1] == -1){
                     start(type);
                     return;
@@ -81,7 +84,7 @@ public class ChessWithMe {
                 clearConsole();
                 Menu.afficherTitre();
                 System.out.println(plateau);
-                int [] co4 = noir.choixDeplacement(noir.getPseudo() + " où voux tu bouger la pièce ? (ex: a2 ou 2a): ");
+                int [] co4 = noir.choixDeplacement(noir.getPseudo() + " Où veux tu bouger la pièce ? (ex: a2 ou 2a): ", historique);
                 readyj2 = !noir.demanderDeplacement(plateau,co3,co4);
                 Menu.afficherTitre();
                 System.out.println(plateau);
@@ -114,6 +117,7 @@ public class ChessWithMe {
 
     // --- Initialisation plateau ---
     Plateau plateau = new Plateau(type);
+    Historique historique = new Mouvement(plateau);
 
     boolean readyHuman = true;
 
@@ -122,11 +126,11 @@ public class ChessWithMe {
         // --- Tour Humain ---
         do {
             humain.echecJoueur(plateau);
-            int[] co1 = humain.choixDeplacement(humain.getPseudo() + " choisissez une pièce à déplacer : ");
+            int[] co1 = humain.choixDeplacement(humain.getPseudo() + " choisissez une pièce à déplacer : ", historique);
             if (co1[0] == -1) { startBot(type); return; } // reset
             clearConsole();
             System.out.println(plateau);
-            int[] co2 = humain.choixDeplacement("Où voulez-vous déplacer la pièce ?");
+            int[] co2 = humain.choixDeplacement("Où voulez-vous déplacer la pièce ?", historique);
             readyHuman = !humain.demanderDeplacement(plateau, co1, co2);
             clearConsole();
             System.out.println(plateau);

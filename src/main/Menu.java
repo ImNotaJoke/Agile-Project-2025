@@ -114,7 +114,7 @@ public class Menu {
             System.out.println("\n\n                                 1. Promotion");
             System.out.println("                                 2. Echec");
             System.out.println("                                 3. Echec et Mat");
-            System.out.println("                                 4. Deplacement des pion");
+            System.out.println("                                 4. Deplacements des pions");
             System.out.println("                                 5. Tutoriel\n");
             System.out.println("                                 6. Retour au menu principal\n");
 
@@ -178,7 +178,7 @@ public class Menu {
         afficherCreditsAscii();
         System.out.println("   Réalisé par :\n");
         System.out.println("   - Sulivan");
-        System.out.println("   - Camille");
+        System.out.println("   - Camille                               UwU");
         System.out.println("   - Manon");
         System.out.println("   - Matheo");
         System.out.println("   - Nathan");
@@ -191,13 +191,13 @@ public class Menu {
     // Affiche les regles des jeux des echecs simplifié
     public static void afficherRegles(Scanner scanner) {
         afficherReglesAscii();
-        System.out.println("\n\n   Règles du jeu d'échecs simplifié :\n");
+        System.out.println("\n\n   Règles du jeu d'échecs simplifiées :\n");
         System.out.println("   - Chaque joueur commence avec 8 pions, 2 tours, 2 cavaliers, 2 fous, 1 dame et 1 roi.");
         System.out.println("   - Les pions avancent d'une case, mais capturent en diagonale.");
         System.out.println("   - Les tours se déplacent en ligne droite horizontalement ou verticalement.");
         System.out.println("   - Les cavaliers se déplacent en 'L', deux cases dans une direction puis une case perpendiculairement.");
         System.out.println("   - Les fous se déplacent en diagonale sur n'importe quelle distance.");
-        System.out.println("   - Les dames se déplacent en ligne droite dans toutes les directions.");
+        System.out.println("   - Les dames se déplacent sur la distance qu'elles souhaitent dans toutes les directions.");
         System.out.println("   - Les rois se déplacent d'une case dans toutes les directions.");
         System.out.println("   - Attention seul le cavalier peut sauter au dessus des autres pièces.");
         System.out.println("   - Le but du jeu est de mettre le roi adverse en échec et mat.");
