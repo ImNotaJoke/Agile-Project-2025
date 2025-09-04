@@ -1,8 +1,8 @@
 package main;
 
 import java.util.Scanner;
-import main.piece.*;
 import main.historiqueMouvement.Historique;
+import main.piece.*;
 public class Joueur {
     /* Attributs */
     private String pseudo;
@@ -129,6 +129,12 @@ public class Joueur {
         }
 
         if(!plateau.getPlateau()[co1[0]][co1[1]].getColor().equals(this.getCouleur())){
+            ChessWithMe.clearConsole();
+            System.out.println("Mauvaise couleur");
+            return false;
+        }
+
+        if(plateau.getPlateau()[co1[0]][co1[1]].getColor().equals(plateau.getPlateau()[co2[0]][co2[1]].getColor())){
             ChessWithMe.clearConsole();
             System.out.println("Mauvaise couleur");
             return false;
