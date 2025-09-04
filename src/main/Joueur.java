@@ -2,6 +2,7 @@ package main;
 
 import java.util.Scanner;
 import main.piece.*;
+import main.historiqueMouvement.Historique;
 public class Joueur {
     /* Attributs */
     private String pseudo;
@@ -53,12 +54,13 @@ public class Joueur {
         return true;
     }
 
-    public int[] choixDeplacement(String entree) {
+    public int[] choixDeplacement(String entree, Historique historique) {
         Scanner scanner = new Scanner(System.in);
         String input;
         char c1;
         char c2;
         int[] tabco = new int[2];
+        Plateau plateau;
 
         while (true) {
             try {
@@ -75,6 +77,13 @@ public class Joueur {
                     return new int[]{-1, -1}; // Indique une réinitialisation
                 }
                 
+                if (input.equalsIgnoreCase("hisotique") || input.equalsIgnoreCase("history") || input.equalsIgnoreCase("histoire")){
+                    historique.afficher();
+                    System.out.print("\033[2J");
+                    System.out.flush();
+                    throw new IllegalArgumentException("Historique affiché. Veuillez entrer une position valide.");
+                }
+
                 // Vérification longueur exacte = 2
                 if (input.length() != 2) {
                     throw new IllegalArgumentException("Format de position invalide. Utilisez le format 'a2'.");

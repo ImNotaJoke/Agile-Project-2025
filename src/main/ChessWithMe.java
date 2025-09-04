@@ -3,6 +3,8 @@ package main;
 import java.util.Scanner;
 
 import main.piece.Roi;
+import main.historiqueMouvement.Historique;
+import main.historiqueMouvement.Mouvement;
 
 
 public class ChessWithMe {
@@ -34,7 +36,8 @@ public class ChessWithMe {
         }
 
         Plateau plateau = new Plateau(type);
-        
+        Historique historique = new Mouvement(plateau);
+
         clearConsole();
         Menu.afficherTitre();
         System.out.println(plateau);
@@ -115,6 +118,7 @@ public class ChessWithMe {
 
     // --- Initialisation plateau ---
     Plateau plateau = new Plateau(type);
+    Historique historique = new Mouvement(plateau);
 
     boolean readyHuman = true;
 
@@ -123,11 +127,11 @@ public class ChessWithMe {
         // --- Tour Humain ---
         do {
             humain.echecJoueur(plateau);
-            int[] co1 = humain.choixDeplacement(humain.getPseudo() + " choisissez une pièce à déplacer : ");
+            int[] co1 = humain.choixDeplacement(humain.getPseudo() + " choisissez une pièce à déplacer : ", historique);
             if (co1[0] == -1) { startBot(type); return; } // reset
             clearConsole();
             System.out.println(plateau);
-            int[] co2 = humain.choixDeplacement("Où voulez-vous déplacer la pièce ?");
+            int[] co2 = humain.choixDeplacement("Où voulez-vous déplacer la pièce ?", historique);
             readyHuman = !humain.demanderDeplacement(plateau, co1, co2);
             clearConsole();
             System.out.println(plateau);
