@@ -56,7 +56,7 @@ public class ChessWithMe {
         do{
             do {
                 blanc.echecJoueur(plateau);
-                int [] co1 = blanc.choixDeplacement(blanc.getPseudo() + " choisie une pièce à déplacer (ex: a2 ou 2a) (Joueur " + j1.getCouleur() + "):", historique);
+                int [] co1 = blanc.choixDeplacement(blanc.getPseudo() + " Choisissez une pièce à déplacer (ex: a2 ou 2a) (Joueur " + j1.getCouleur() + "):", historique);
                 if(co1[0] == -1 && co1[1] == -1){
                     start(type);
                     return;
@@ -64,7 +64,7 @@ public class ChessWithMe {
                 clearConsole();
                 Menu.afficherTitre();
                 System.out.println(plateau);
-                int [] co2 = blanc.choixDeplacement(blanc.getPseudo() + " où voux tu bouger la pièce ? (ex: a2 ou 2a): ", historique);
+                int [] co2 = blanc.choixDeplacement(blanc.getPseudo() + " Où veux tu bouger la pièce ? (ex: a2 ou 2a): ", historique);
                 readyj1 = !blanc.demanderDeplacement(plateau,co1,co2);
                 Menu.afficherTitre();
                 System.out.println(plateau);
@@ -75,7 +75,7 @@ public class ChessWithMe {
 
             do {
                 noir.echecJoueur(plateau);
-                int [] co3 = noir.choixDeplacement(noir.getPseudo() + " choisie une pièce à déplacer (ex: a2 ou 2a) (Joueur " + j2.getCouleur() + "):", historique);
+                int [] co3 = noir.choixDeplacement(noir.getPseudo() + " choisissez une pièce à déplacer (ex: a2 ou 2a) (Joueur " + j2.getCouleur() + "):", historique);
                 if(co3[0] == -1 && co3[1] == -1){
                     start(type);
                     return;
@@ -83,7 +83,7 @@ public class ChessWithMe {
                 clearConsole();
                 Menu.afficherTitre();
                 System.out.println(plateau);
-                int [] co4 = noir.choixDeplacement(noir.getPseudo() + " où voux tu bouger la pièce ? (ex: a2 ou 2a): ", historique);
+                int [] co4 = noir.choixDeplacement(noir.getPseudo() + " Où veux tu bouger la pièce ? (ex: a2 ou 2a): ", historique);
                 readyj2 = !noir.demanderDeplacement(plateau,co3,co4);
                 Menu.afficherTitre();
                 System.out.println(plateau);
