@@ -1,0 +1,5 @@
+Le projet agile consistait en une expérience pratique de quatre jours durant laquelle une équipe de quatre étudiants devait appliquer la méthodologie agile à un projet de leur choix. L’objectif était de travailler de manière itérative et collaborative, en organisant des sprints de deux heures, pour planifier, développer et améliorer continuellement leur projet.
+
+Pour ce projet, les étudiants ont choisi de travailler sur un jeu d’échecs, ce qui leur a permis de mettre en pratique la planification des tâches, la gestion des priorités et la coordination en équipe, tout en testant régulièrement leurs avancées et en ajustant leur approche selon les retours obtenus à chaque sprint. Ce type d’exercice illustre parfaitement les principes agiles, notamment la flexibilité, la communication et l’amélioration continue.
+
+Ce projet agile m’a permis de développer mes compétences en collaboration, gestion de projet et adaptation rapide. Travailler sur un jeu complexe comme les échecs en sprints courts m’a appris à planifier efficacement, tester régulièrement et ajuster mes stratégies pour obtenir des résultats concrets.
